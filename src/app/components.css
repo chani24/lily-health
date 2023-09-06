@@ -27,8 +27,11 @@
 }
 
 
-
 /* Outline Button */
 .button-outline {
     background-color: transparent;
 }
+@media (min-width: 768px) { 
+    .inverse-size-button{
+padding: 12px 24px; }
+ }
