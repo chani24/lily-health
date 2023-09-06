@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color: rgba(255, 8, 111, 1);
+}
+
+
+body {
+  color: var(--color);
+}
+
+.container-padding{
+padding-left: 32px;
+padding-right: 32px;
+}
+
+.bg-light{
+background-color: rgba(255, 157, 196, 0.12);
+}
+.heading{
+  font-weight: 700;
+ font-size: 40px;
+ line-height: 40px;
+}
+
+@media screen and (max-width: 767px){
+}
+
+@media screen and (max-width: 479px){
+  .container-padding{
+    padding-left: 16px;
+padding-right: 16px;
+    }
+}
+
+

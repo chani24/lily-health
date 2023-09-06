@@ -1,0 +1,42 @@
+.footer{
+ background-color: rgb(255, 8, 111, 1);
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+.title{
+  font-size: 48px;
+}
+
+.description{
+  font-size: 24px;
+  max-width: 422px;
+}
+
+.nav_link > div{
+margin-bottom: 20px;
+font-size: 20px;
+}
+
+@media screen and (max-width: 767px){
+  .top_nav{
+    height: 75px;
+}
+}
+
+@media screen and (max-width: 479px){
+
+  .title{
+    font-size: 32px;
+  }
+  
+  .description{
+    font-size: 16px;
+  }
+  
+}
