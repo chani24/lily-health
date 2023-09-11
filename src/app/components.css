@@ -24,6 +24,18 @@
 .button-primary {
     background-color: rgba(255, 8, 111, 1);
     color: #fff;
+   
+}
+
+.button-small{
+padding: 6px 20px;
+font-weight: 500;
+ min-width: 50px;
+}
+
+.button-light-outline{
+border: 1px solid #fff;
+color: #fff;
 }
 
 
@@ -34,4 +46,8 @@
 @media (min-width: 768px) { 
     .inverse-size-button{
 padding: 12px 24px; }
+
+.button-small{
+    padding: 8px 20px;
+}
  }

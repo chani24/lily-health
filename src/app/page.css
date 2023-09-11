@@ -1,0 +1,210 @@
+.slide-container {
+	width: 100%;
+	/* Set the desired width */
+	overflow-x: scroll;
+
+}
+
+.slide-container.doctors{
+    touch-action: none;
+}
+
+.slide-wrapper {
+	width: 300%;
+	display: flex;
+	gap: 10px;
+}
+
+.slide {
+	width: 100%;
+	height: 350px;
+	position: relative;
+}
+
+.slide .button-container {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	z-index: 20;
+}
+
+.slide.doctors {
+	width: 350px;
+	height: 471px;
+}
+
+.slide img {
+	border-radius: 12px;
+	object-fit: cover;
+}
+
+.arrow-button {
+	width: 45px;
+	height: 45px;
+}
+
+.hero-heading {
+	font-size: 32px;
+	color: #FFF;
+	font-weight: 800;
+	line-height: 120%
+}
+
+.collage {
+	display: flex;
+	flex-direction: column;
+	color: white;
+}
+
+.collage .left,
+.collage .right {
+	width: 100%;
+}
+
+.collage .large,
+.collage .small {
+	border-radius: 12px;
+	overflow: hidden;
+	margin-bottom: 8px;
+}
+
+.collage .large {
+	padding-top: 50px;
+	height: 362px;
+	position: relative;
+}
+
+.collage .large .image {
+	position: absolute;
+	right: -110px;
+	bottom: 0;
+	height: 350px;
+	width: 350px;
+}
+
+.collage .large .text {
+	width: 220px;
+}
+
+.collage .large .image img {
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	object-fit: cover;
+	left: 0;
+}
+
+.collage .small {
+	padding-top: 18px;
+	padding-bottom: 34px;
+}
+
+.collage p {
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 120%;
+}
+
+.collage span {
+	line-height: 120%;
+}
+
+@media (min-width: 640px) {
+	.slide-container:not(.doctors) {
+		overflow-x: hidden;
+	}
+
+	.slide-wrapper:not(.doctors) {
+		width: 100%;
+		display: flex;
+		gap: 10px;
+	}
+
+	.slide {
+		width: 33%;
+		height: 471px;
+	}
+
+	.slide.doctors {
+		width: 300px;
+		height: 400px;
+	}
+
+	.slide.middle-slide {
+		width: 48%;
+	}
+}
+
+.mini-hero-image{
+  position: relative;
+  height: 350px;
+  width: 100%;
+  transform: scale(1.25, 1.1);
+}
+
+@media (min-width: 767px) {
+  .mini-hero-image {
+    position: absolute;
+    bottom: -20px;
+    right: -100px;
+    height: 502px;
+    width: 667px;
+  }
+
+	.arrow-button {
+		width: 60px;
+		height: 60px;
+	}
+
+	.hero-heading {
+		font-size: 80px;
+	}
+
+	.collage {
+		flex-direction: row;
+		gap: 16px;
+	}
+
+	.collage .left,
+	.collage .right {
+		width: 50%;
+	}
+
+	.collage .large,
+	.collage .small {
+		border-radius: 12px;
+		overflow: hidden;
+		margin-bottom: 16px;
+	}
+
+	.collage .large {
+		height: 885px;
+    padding-top: 45px;
+	}
+
+
+	.collage .small {
+		height: 475px;
+	}
+
+	.collage .large .text {
+		width: 100%;
+	}
+
+  .collage .large .image {
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: -100px;
+    height: 600px;
+    width: 150%;
+  }
+
+  
+
+	.collage p {
+		font-size: 48px;
+	}
+
+  .collage span {
+    font-size: 24px;
+  }
+}

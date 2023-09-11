@@ -9,14 +9,40 @@
 
 body {
   color: var(--color);
+  overflow-x: hidden;
 }
+
+p{
+margin: 16px 0;
+}
+
+h2.h2, h3.h3{
+   font-weight: 600;
+ font-size: 32px;
+}
+
+h2.h2{
+ line-height: 41.6px;
+}
+
+h3.h3{
+  line-height: 38.4px;
+ }
 
 .container-padding{
 padding-left: 32px;
 padding-right: 32px;
 }
 
+.sm-container-padding{
+  padding-left: 0;
+padding-right: 0;
+  }
+
 .bg-light{
+background-color: rgba(255, 157, 196, 0.3);
+}
+.bg-lighter{
 background-color: rgba(255, 157, 196, 0.12);
 }
 .heading{
@@ -25,7 +51,33 @@ background-color: rgba(255, 157, 196, 0.12);
  line-height: 40px;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 @media (min-width: 768px) { 
+  p{
+    font-size: 24px;
+    line-height: 36px;
+    margin: 20px 0;
+    }
+    
+    h2.h2{
+      font-size: 72px;
+      line-height: 93.6px;
+    }
+
+    h3.h3{
+      font-size: 48px;
+      line-height: 57.6px;
+    }
+
   .heading{
     font-weight: 700;
    font-size: 100px;
@@ -37,7 +89,7 @@ background-color: rgba(255, 157, 196, 0.12);
 }
 
 @media screen and (max-width: 479px){
-  .container-padding{
+  .container-padding, .sm-container-padding{
     padding-left: 16px;
 padding-right: 16px;
     }
