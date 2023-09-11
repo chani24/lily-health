@@ -187,7 +187,7 @@ Our founder experienced the loss of her mother at the age of 5, and growing up w
                 <div className="slide-wrapper doctors">
                   {topDoctors.map((doctor, index) => {
                     return (
-                      <div className="slide doctors"><Image alt="doctor" src={"/images/" + doctor.image + ".png"} fill/> <div className="button-container"> <Link href={doctor.bookingLink}><button className="button button-primary button-small">Book</button></Link></div></div>
+                      <div key={index} className="slide doctors"><Image alt="doctor" src={"/images/" + doctor.image + ".png"} fill/> <div className="button-container"> <Link href={doctor.bookingLink}><button className="button button-primary button-small">Book</button></Link></div></div>
                     )
                   })}
       </div>
