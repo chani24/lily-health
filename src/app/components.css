@@ -43,6 +43,22 @@ color: #fff;
 .button-outline {
     background-color: transparent;
 }
+
+.form{
+    margin: 24px 0;
+}
+.form input{
+    border-radius: 12px;
+    border: 0.5px solid rgba(255, 8, 111, 0.50);
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding: 12px 10px;
+    height: 44px;
+    width: 100%;
+    background-color: transparent;
+    color: #001433;
+}
 @media (min-width: 768px) { 
     .inverse-size-button{
 padding: 12px 24px; }

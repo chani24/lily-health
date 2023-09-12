@@ -5,8 +5,9 @@ import Image from'next/image'
 import Link from 'next/link'
 import gsap from 'gsap';
 
+import Footer from './_components/Footer/Footer';
 
-import './page.css'
+
 
 export default function Home() {
   useEffect(() => {
@@ -76,6 +77,7 @@ export default function Home() {
 
 
   return (
+    <>
     <main>
       <div className="container-padding">
         <div className="bg-lighter py-8 px-5 my-4 rounded-lg flex flex-col items-center justify-center md:h-screen">
@@ -258,24 +260,9 @@ Our founder experienced the loss of her mother at the age of 5, and growing up w
       </div>
       </div>
         </div></div>
-      <div className='container-padding'>
-        <div className="bg-[#FF086F] relative text-white pt-8 my-4 overflow-hidden rounded-lg flex flex-col md:flex-row items-center justify-center">
-          <div className="container-padding md:px-[80px] md:py-[40px] md:w-1/2"><h3 className="h3 text-center md:text-left my-5 max-w-4xl">Join us to gain access to world-class health professionals</h3>
-        <p className="text-center  md:text-left  max-w-2xl md:text-xl">Search through our platform with a robust range of medical professionals</p>
-        <div className="my-7 max-w-3xl md:flex">
-          <Link href="login"><button className="button button-light w-full inverse-size-button mb-3 md:me-3">Login</button></Link>
-          <Link href="book"><button className="button button-light-outline w-full  inverse-size-button md:ms-3">Book a Doctor</button></Link>
-            </div></div>
-          <div className="w-full md:w-1/2 md:h-full"><div className="mini-hero-image">
-            <Image alt="infant" src="/images/infant--2.png" fill/>
-          </div></div>
-          
-        
-        
-      </div>
-      </div>
 
       
     </main>
+    <Footer/></>
   )
 }

@@ -1,5 +1,6 @@
 import './globals.css'
 import './components.css'
+import './page.css'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 
@@ -24,7 +25,6 @@ export default function RootLayout({
       <body className={font.className}>
         <TopNav/>
         {children}
-        <Footer/>
       </body>
     </html>
   )
