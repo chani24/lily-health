@@ -1,8 +1,4 @@
-'use client'
-
-import { useRef, useEffect, useState } from 'react';
 import Image from'next/image'
-import gsap from 'gsap';
 
 import Footer from '../_components/Footer/Footer';
 
