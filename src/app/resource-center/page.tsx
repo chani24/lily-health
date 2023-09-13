@@ -1,13 +1,14 @@
+'use client'
 import Footer from '../_components/Footer/Footer';
 
 import styles from './resource.module.css'
-import type { Metadata } from 'next'
+//import type { Metadata } from 'next'
 import { useState } from 'react';
 import gsap from 'gsap';
 
-export const metadata: Metadata = {
-  title: 'Lily Health - Resource center',
-}
+// export const metadata: Metadata = {
+//   title: 'Lily Health - Resource center',
+// }
 
 
 
