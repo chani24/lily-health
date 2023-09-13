@@ -9,10 +9,9 @@ import Footer from '../_components/Footer/Footer';
 import styles from './about.module.css'
 import type { Metadata } from 'next'
 
-/*export const metadata: Metadata = {
+export const metadata: Metadata = {
   title: 'Lily Health - About Us',
-}*/
-
+}
 
 
 export default function About() {
@@ -37,64 +36,57 @@ export default function About() {
         
         </div>
         <div className="container-padding md:flex md:gap-2">
-        <div className={styles.large_card + " bg-[#FF4D93]"}>
+          <div className={styles.large_card + " bg-[#FF4D93]"}>
                 <div className={"container-padding " + styles.text}>
                   <p>Our Mission</p>
                   <span>LILY Health empowers women and couples with tailored, safe, and accessible fertility treatments, focusing on compassionate care and patient-centered strategies.</span>
                 </div>
                 <div className={styles.image}><Image alt="doctor" src="/images/rian-ramirez-2.png" fill/></div>
-              </div><div className={styles.large_card + " bg-[#FF2771] " +styles.second}>
-                <div className={"container-padding " + styles.text}>
+              
+          </div>
+          <div className={styles.large_card + " bg-[#FF2771] " + styles.second}>   
+            <div className={"container-padding " + styles.text}>
                   <p>Our Vision</p>
                   <span>Our goal is to revolutionize the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples.</span>
                 </div>
-                <div className={styles.image}><Image alt="doctor" src="/images/bruno-rodrigues-2.png" fill/></div>
-              </div>
+                <div className={styles.image}><Image alt="doctor" src="/images/bruno-rodrigues-2.png" fill/></div> 
+          </div>
         </div>
         
-      <div className="my-3 md:my-0 bg-lighter sm-container-padding">
-          <div className='pt-2 pb-[40px] md:py-[129px] md:px-[132px]'>
-            <div>
-              
+      <div className="my-3 md:my-0 bg-light container-padding">
+          <div className='py-[40px] md:py-[109px] md:flex'>
+            <div className='md:w-1/3 md:pr-[40px] '>
+              <h3 className="h3">Our Values</h3>
+              <p className="mt-3 mb-5 mb-6">These are the values our brand eludes and we uphold every bit of value.</p>
             </div>
-          <p className="my-4 mb-6">HOW TO GET HELP AND SPEAK TO A PROFESSIONAL</p>
-          <div className="collage">
-            <div className="left">
-              <div className="large bg-[#FB5B46]">
-                <div className="container-padding text">
-                  <p>01</p>
-                  <p>Search</p>
-                  <span>Search through our platform with a robust range of medical professionals</span>
-                </div>
-                <div className="image"><Image alt="doctor" src="/images/usman-yousaf.png" fill/></div>
-              </div>
-              <div className="small bg-[#E4394D]">
-                <div className="container-padding text">
-                  <p>02</p>
-                  <p>Login</p>
-                  <span>Create an account on our platform and you can decide to be anonymous or have a user profile.</span>
+            <div className='md:w-2/3 md:grid md:grid-cols-2 md:gap-x-2'>
+            <div className={styles.small_card + " bg-[#FB5B46]"}>
+                <div className={"container-padding " + styles.text}>
+                  <p>Privacy</p>
+                  <span>LILY Health empowers women and couples with tailored, safe, and accessible fertility treatments, focusing on compassionate care and patient-centered strategies.</span>
                 </div>
               </div>
-            </div>
-            <div className='right'>
-              <div className="small bg-[#FF2771]">
-                <div className="container-padding text">
-                  <p>03</p>
-                  <p>Book</p>
-                  <span>Discover and reserve appointments with a diverse range of medical professionals seamlessly</span>
+              <div className={styles.small_card + " bg-[#FF2771]"}>
+                <div className={"container-padding " + styles.text}>
+                  <p>Accessibility</p>
+                  <span>LILY Health empowers women and couples with tailored, safe, and accessible fertility treatments, focusing on compassionate care and patient-centered strategies.</span>
                 </div>
               </div>
-            <div className="large bg-[#FB5B46] md:bg-[#FF4D93]">
-                <div className='container-padding text'>
-                  <p>04</p>
-                  <p>Help</p>
-                  <span>Get the assistance and support you need from our dedicated team to make the most of our platform.</span>
+              <div className={styles.small_card + " bg-[#E4394D]"}>
+                <div className={"container-padding " + styles.text}>
+                  <p>Competence</p>
+                  <span>LILY Health empowers women and couples with tailored, safe, and accessible fertility treatments, focusing on compassionate care and patient-centered strategies.</span>
                 </div>
-                <div className="image"><Image alt="doctor" src="/images/infant--2.png" fill/></div>
               </div>
-              
-            </div>
+              <div className={styles.small_card + " bg-[#FF4D93]"}>
+                <div className={"container-padding " + styles.text}>
+                  <p>Education</p>
+                  <span>LILY Health empowers women and couples with tailored, safe, and accessible fertility treatments, focusing on compassionate care and patient-centered strategies.</span>
+                </div>
           </div>
+            </div>
+          
+          
         </div>
       </div>
       

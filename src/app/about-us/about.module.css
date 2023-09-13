@@ -34,6 +34,21 @@
     position: relative;
   }
 
+  .small_card{
+    border-radius: 12px;
+	  overflow: hidden;
+	  margin-bottom: 8px;
+    color: white;
+    padding-top: 29px;
+    padding-bottom: 55px;
+    min-height: 200px;
+  }
+
+  .small_card p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 120%;
+  }
 
 
   .large_card p {
