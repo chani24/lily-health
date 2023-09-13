@@ -1,0 +1,62 @@
+.header{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+
+  .resource_container{
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .resource_container h4{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+
+  .upper_div{
+    height: 36px;
+  }
+  .upper_div svg{
+    height: 32px;
+    width: 32px;
+  }
+
+  .resource{
+    height: 0;
+    overflow: hidden;
+  }
+  .resource_container span{
+    padding-top: 24px;
+    display: block;
+    font-size: 14px;
+  }
+
+@media screen and (min-width: 767px){
+  .header{
+        font-size: 60px;
+    }
+
+    .resource_container{
+      border-radius: 8px;
+      padding: 34px 92px;
+    }
+
+    .resource_container h4{
+      font-size: 48px;
+    }
+  
+    .upper_div{
+      height: 58px;
+    }
+
+    .upper_div svg{
+      height: 48px;
+      width: 48px; 
+    }
+
+    .resource_container span{
+      font-size: 24px;
+    }
+}

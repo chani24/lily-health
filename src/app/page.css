@@ -6,7 +6,7 @@
 }
 
 .slide-container.doctors{
-    touch-action: none;
+    touch-action: pan-y;
 }
 
 .slide-wrapper {
