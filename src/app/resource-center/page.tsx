@@ -1,5 +1,3 @@
-'use client'
-
 import Footer from '../_components/Footer/Footer';
 
 import styles from './resource.module.css'
