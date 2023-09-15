@@ -30,30 +30,27 @@ const availableTimes = [
   {
     date: "Saturday, 5th of July, 2023",
     isOpen: false,
-    active: 0,
     times: ["4:30 PM", "5:00 PM", "5:30 PM"],
   },
   {
     date: "Sunday, 6th of July, 2023",
     isOpen: false,
-    active: 0,
     times: ["4:30 PM", "5:00 PM", "5:30 PM"],
   },
   {
     date: "Monday, 7th of July, 2023",
     isOpen: false,
-    active: 0,
     times: ["4:30 PM", "5:00 PM", "5:30 PM"],
   },
   {
     date: "Tuesday, 8th of July, 2023",
     isOpen: false,
-    active: 0,
     times: ["4:30 PM", "5:00 PM", "5:30 PM"],
   },
 ];
 export default function Doctors() {
   const [resources, setResources] = useState(availableTimes);
+  const [activeTime, setActiveTime] = useState([0, 0]);
   const [inPerson, setInPerson] = useState(true);
   const toggleResource = (index: number) => {
     const copyOfResources = [...resources];
@@ -66,6 +63,10 @@ export default function Doctors() {
     }
 
     setResources(copyOfResources);
+  };
+
+  const chooseTime = (dayIndex: any, TimeIndex: any) => {
+    setActiveTime([dayIndex, TimeIndex]);
   };
 
   return (
@@ -267,11 +268,17 @@ export default function Doctors() {
                             styles.resource + " flex gap-3 resource_" + index
                           }
                         >
-                          {resource.times.map((time, index) => {
+                          {resource.times.map((time, id) => {
                             return (
                               <div
-                                key={index}
-                                className={"pt-3 " + styles.inner_box}
+                                key={id}
+                                onClick={() => chooseTime(index, id)}
+                                className={
+                                  activeTime[0] === index &&
+                                  activeTime[1] === id
+                                    ? "bg-lighter mt-3 " + styles.inner_box
+                                    : "mt-3 " + styles.inner_box
+                                }
                               >
                                 <span>{time}</span>
                               </div>
@@ -309,7 +316,8 @@ export default function Doctors() {
                     "button button-primary " + styles.btn + " " + styles.btn_2
                   }
                 >
-                  Book Session for 4:30 PM
+                  Book Session for{" "}
+                  {resources[activeTime[0]].times[activeTime[1]]}
                 </button>
               </div>
             </div>
