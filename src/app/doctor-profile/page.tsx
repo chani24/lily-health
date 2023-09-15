@@ -4,7 +4,6 @@ import Image from "next/image";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import type { Metadata } from "next";
 import { useState } from "react";
 import gsap from "gsap";
 
