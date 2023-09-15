@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="col-span-12 md:col-span-3 md:flex md:justify-between mb-5 md:mb-0">
           <div className={styles.nav_link}>
             <div><Link href="/"></Link>Home</div>
-            <div><Link href="/about"></Link>About Us</div>
+            <div><Link href="/about-us"></Link>About Us</div>
             <div><Link href="/services"></Link>Our Services</div>
             <div><Link href="/gallery">Gallery</Link></div>
           </div>

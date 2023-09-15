@@ -56,11 +56,11 @@ export default function TopNav() {
       </div>
       <div className={styles.dropdown_wrapper}><div className={'container-padding ' + styles.top_nav__dropdown}>
         <div className="md:hidden"><Link href="/login"></Link>Login</div>
-        <div><Link href="/about"></Link>About Us</div>
+        <div><Link href="/about-us"></Link>About Us</div>
         <div><Link href="/services"></Link>Our Services</div>
         <div><Link href="/doctors">Doctors</Link></div>
         <div><Link href="/gallery">Gallery</Link></div>
-        <div><Link href="/resources">Resources</Link></div>
+        <div><Link href="/resource-center">Resources</Link></div>
         <div><Link href="/support">Support</Link></div>
      </div></div>
       
