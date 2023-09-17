@@ -22,7 +22,7 @@ h2.h2, h3.h3{
 }
 
 h2.h2{
- line-height: 41.6px;
+ line-height: 115%;
 }
 
 h3.h3{
@@ -70,7 +70,6 @@ background-color: rgba(255, 157, 196, 0.12);
     
     h2.h2{
       font-size: 72px;
-      line-height: 93.6px;
     }
 
     h3.h3{

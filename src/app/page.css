@@ -21,6 +21,10 @@
 	position: relative;
 }
 
+.slide-wrapper.five-slides {
+width: 500%;
+}
+
 .slide .button-container {
 	position: absolute;
 	bottom: 20px;
@@ -29,6 +33,8 @@
 }
 
 .slide.doctors {
+	border-radius: 12px;
+	background-color: #FDEFF0;
 	width: 350px;
 	height: 471px;
 }

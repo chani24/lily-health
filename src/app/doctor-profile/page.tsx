@@ -4,8 +4,16 @@ import Image from "next/image";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import { useState } from "react";
+import { Key, useEffect, useState } from "react";
 import gsap from "gsap";
+import useSWR from "swr";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import TopNav from "../_components/TopNav/TopNav";
+import { fetcher, imageLoader } from "../_lib/strapi-rest";
+import Link from "next/link";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 const doctors = [
   {
@@ -47,7 +55,27 @@ const availableTimes = [
     times: ["4:30 PM", "5:00 PM", "5:30 PM"],
   },
 ];
-export default function Doctors() {
+export default function Doctors(props: any) {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+    });
+  }, []);
+
+  const { data } = useSWR(
+    "/api/doctors/" + props.searchParams.id + "?populate=*",
+    fetcher
+  );
+
+  const { data: topDoctors } = useSWR(
+    "/api/doctors?populate=*&pagination[pageSize]=3&pagination[page]=1",
+    fetcher
+  );
+
+  const { data: reviews } = useSWR(
+    "/api/doctors?populate=*&pagination[pageSize]=5&pagination[page]=1",
+    fetcher
+  );
   const [resources, setResources] = useState(availableTimes);
   const [activeTime, setActiveTime] = useState([0, 0]);
   const [inPerson, setInPerson] = useState(true);
@@ -70,40 +98,44 @@ export default function Doctors() {
 
   return (
     <>
+      <TopNav />
       <main>
         <div className="">
           <div className={"relative " + styles.photo_card}>
             <div className={styles.upper}></div>
             <div className={"container-padding " + styles.lower}>
               <div>
-                <span className={styles.header}>Temitope Aiyegbusi</span>
-                <span className={styles.status}>Medical Doctor</span>
+                <span className={styles.header}>
+                  {data?.data?.attributes.firstName +
+                    " " +
+                    data?.data?.attributes.lastName}
+                </span>
+                <span className={styles.status}>
+                  {data?.data?.attributes.profession}
+                </span>
               </div>
             </div>
-            <div className={styles.image}></div>
+            <div
+              className={styles.image}
+              style={{
+                backgroundImage:
+                  "url(" +
+                  process.env.STRAPI_API_ENDPOINT +
+                  data?.data?.attributes.avatar.data.attributes.url +
+                  ")",
+              }}
+            ></div>
           </div>
           <div className="md:py-[80px] md:px-[148px] flex flex-col md:flex-row md:justify-between">
             <div className="w-full md:w-2/3 md:pr-[80px] container-padding">
               <div>
                 <h1 className={styles.header}>Overview</h1>
-                <p className={styles.p}>
-                  Temitope is a distinguished medical doctor whose life's work
-                  has been dedicated to the betterment of healthcare and the
-                  well-being of her patients. With a career spanning over three
-                  decades, he has left an indelible mark on the medical field.
-                </p>
-                <p className={styles.p}>
-                  His life story is a testament to the profound impact that one
-                  individual can have on the world of medicine and the lives of
-                  the people she serves. Her unwavering commitment to her
-                  patients, her community, and her family exemplifies the
-                  qualities of a true medical pioneer and humanitarian.
-                </p>
+                <p className={styles.p}>{data?.data?.attributes.bio}</p>
               </div>
               <div>
                 <h2 className={styles.header}>Reviews</h2>
               </div>
-              <div>
+              {/*<div>
                 <div className="flex items-end mt-3 mb-[-10px]">
                   <span className={styles.name}>Veronica Sanches</span>{" "}
                   <span className={styles.p + " mx-3"}>
@@ -119,7 +151,7 @@ export default function Doctors() {
                         cy="1.5"
                         r="1"
                         fill="#111111"
-                        fill-opacity="0.8"
+                        fillOpacity="0.8"
                       />
                     </svg>
                   </span>
@@ -131,65 +163,7 @@ export default function Doctors() {
                   guidance, and his expertise made the entire experience
                   seamless and reassuring.
                 </p>
-              </div>
-              <div>
-                <div className="flex items-end mt-3 mb-[-10px]">
-                  <span className={styles.name}>Veronica Sanches</span>{" "}
-                  <span className={styles.p + " mx-3"}>
-                    <svg
-                      width="2"
-                      height="3"
-                      viewBox="0 0 2 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="1"
-                        cy="1.5"
-                        r="1"
-                        fill="#111111"
-                        fill-opacity="0.8"
-                      />
-                    </svg>
-                  </span>
-                  <span className={styles.p}>12th April, 2023</span>
-                </div>
-                <p className={styles.p}>
-                  I highly recommend Dr. Temitope Aiyegbusi for his outstanding
-                  remote care. He asked the right questions, provided valuable
-                  guidance, and his expertise made the entire experience
-                  seamless and reassuring.
-                </p>
-              </div>
-              <div>
-                <div className="flex items-end mt-3 mb-[-10px]">
-                  <span className={styles.name}>Veronica Sanches</span>{" "}
-                  <span className={styles.p + " mx-3"}>
-                    <svg
-                      width="2"
-                      height="3"
-                      viewBox="0 0 2 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="1"
-                        cy="1.5"
-                        r="1"
-                        fill="#111111"
-                        fill-opacity="0.8"
-                      />
-                    </svg>
-                  </span>
-                  <span className={styles.p}>12th April, 2023</span>
-                </div>
-                <p className={styles.p}>
-                  I highly recommend Dr. Temitope Aiyegbusi for his outstanding
-                  remote care. He asked the right questions, provided valuable
-                  guidance, and his expertise made the entire experience
-                  seamless and reassuring.
-                </p>
-              </div>
+                  </div>*/}
             </div>
             <div className="w-full md:w-1/3">
               <div className="bg-light md:hidden container-padding py-4 mb-[40px] flex justify-between items-center">
@@ -220,12 +194,13 @@ export default function Doctors() {
                             "flex justify-between items-center " +
                             styles.upper_div
                           }
+                          onClick={() => toggleResource(index)}
                         >
                           <div>
                             <h4>{resource.date}</h4>
                           </div>
 
-                          <div onClick={() => toggleResource(index)}>
+                          <div>
                             {resource.isOpen ? (
                               <svg
                                 width="20"
@@ -328,22 +303,48 @@ export default function Doctors() {
           }
         >
           <p className={styles.header + " mb-5"}>Book other doctors</p>
-          <div className={styles.collage_wrapper}>
-            {doctors.map((doctor, index) => {
-              return (
-                <div key={index} className={styles.collage_block}>
-                  <div className={styles.collage_image}>
-                    <Image
-                      alt="infant"
-                      src={"/images/" + doctor.image + ".png"}
-                      fill
-                    />{" "}
-                  </div>
-                  <span className={styles.name}>{doctor.name}</span>
-                  <span className={styles.status}>{doctor.status}</span>
-                </div>
-              );
-            })}
+          <div data-aos="fade-up" className={styles.collage_wrapper}>
+            {topDoctors?.data?.map(
+              (
+                doctor: {
+                  id: string;
+                  attributes: {
+                    avatar: {
+                      data: { attributes: { url: string | StaticImport } };
+                    };
+                    firstName: string;
+                    lastName: string;
+                    availability: any;
+                  };
+                },
+                index: Key | null | undefined
+              ) => {
+                return (
+                  <Link href={"/doctor-profile?id=" + doctor.id}>
+                    <div key={index} className={styles.collage_block}>
+                      <div className={styles.collage_image}>
+                        <Image
+                          loader={imageLoader}
+                          alt="doctor"
+                          src={doctor.attributes.avatar.data.attributes.url}
+                          fill
+                        />{" "}
+                      </div>
+                      <span className={styles.name}>
+                        {doctor.attributes.firstName +
+                          " " +
+                          doctor.attributes.lastName}
+                      </span>
+                      <span className={styles.status}>
+                        {doctor.attributes.availability
+                          ? "Available"
+                          : "Unavailable"}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              }
+            )}
           </div>
         </div>
       </main>
