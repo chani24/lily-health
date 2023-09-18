@@ -17,5 +17,5 @@ export async function fetcher(url: string) {
 }
   
  export const imageLoader = ({ src, width}: {src: string, width: number}) => {
-  return `${baseUrl}${src}?w=${width}&q=100`
+  return `${src}?w=${width}&q=100`
 }

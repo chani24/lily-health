@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    STRAPI_API_ENDPOINT:
-      process.env.AUTOPREFIXER_GRIDNEXT_PUBLIC_STRAPI_API_ENDPOINT,
+    STRAPI_API_ENDPOINT: process.env.NEXT_PUBLIC_STRAPI_API_ENDPOINT,
   },
   images: {
     remotePatterns: [

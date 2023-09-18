@@ -120,7 +120,6 @@ export default function Doctors(props: any) {
               style={{
                 backgroundImage:
                   "url(" +
-                  process.env.STRAPI_API_ENDPOINT +
                   data?.data?.attributes.avatar.data.attributes.url +
                   ")",
               }}
