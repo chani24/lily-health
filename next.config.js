@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    STRAPI_API_ENDPOINT: "http://localhost:1337",
+    STRAPI_API_ENDPOINT:
+      process.env.AUTOPREFIXER_GRIDNEXT_PUBLIC_STRAPI_API_ENDPOINT,
   },
   images: {
     remotePatterns: [

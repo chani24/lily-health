@@ -15,10 +15,6 @@ import "aos/dist/aos.css";
 
 import { fetcher, imageLoader } from "../_lib/strapi-rest";
 
-export const metadata: Metadata = {
-  title: "Lily Health - Doctors",
-};
-
 export default function Doctors() {
   useEffect(() => {
     AOS.init({

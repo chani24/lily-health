@@ -7,10 +7,6 @@ import { useState } from "react";
 import gsap from "gsap";
 import TopNav from "../_components/TopNav/TopNav";
 
-// export const metadata: Metadata = {
-//   title: 'Lily Health - Resource center',
-// }
-
 export default function ResourceCenter() {
   const [resources, setResources] = useState([
     {
