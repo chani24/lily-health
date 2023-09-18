@@ -320,8 +320,8 @@ export default function Doctors(props: any) {
                 index: Key | null | undefined
               ) => {
                 return (
-                  <Link href={"/doctor-profile?id=" + doctor.id}>
-                    <div key={index} className={styles.collage_block}>
+                  <Link key={index} href={"/doctor-profile?id=" + doctor.id}>
+                    <div className={styles.collage_block}>
                       <div className={styles.collage_image}>
                         <Image
                           loader={imageLoader}

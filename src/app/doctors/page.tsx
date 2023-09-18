@@ -68,12 +68,8 @@ export default function Doctors() {
                 index: number
               ) => {
                 return (
-                  <Link href={"/doctor-profile?id=" + doctor.id}>
-                    <div
-                      data-aos="fade-up"
-                      key={index}
-                      className={styles.collage_block}
-                    >
+                  <Link key={index} href={"/doctor-profile?id=" + doctor.id}>
+                    <div data-aos="fade-up" className={styles.collage_block}>
                       <div className={styles.collage_image}>
                         <Image
                           loader={imageLoader}
