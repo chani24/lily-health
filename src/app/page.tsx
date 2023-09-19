@@ -14,21 +14,27 @@ import TopNav from "./_components/TopNav/TopNav";
 import { fetcher, imageLoader } from "./_lib/strapi-rest";
 
 export default function Home(props: any) {
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-    });
-  }, []);
-
+  const [doctors, setDoctors] = useState([]);
   const { data, error } = useSWR(
     "/api/doctors?populate=*&pagination[pageSize]=5&pagination[page]=1",
     fetcher
   );
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      setDoctors(data?.data);
+    }
+  }, [data]);
 
   const [doctorsSlide, setDoctorsSlide] = useState(0);
 
   const scrollDoctorsLeft = () => {
-    if (doctorsSlide <= 4 && doctorsSlide > 0) {
+    if (doctorsSlide > 0) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -38,15 +44,24 @@ export default function Home(props: any) {
       if (scrollableContent && Image) {
         setDoctorsSlide(slide);
         const ImageWidth = Image.offsetWidth;
-        const scrollTo = ImageWidth * slide;
+        //10 for the gap between elements
+        const scrollTo = ImageWidth * slide + 10 * slide;
 
         gsap.to(scrollableContent, { x: -scrollTo, duration: 0.5 });
+      }
+
+      if (slide === 0) {
+        setTimeout(() => {
+          const copyOfDoctors = [...doctors];
+          copyOfDoctors.length = 5;
+          setDoctors(copyOfDoctors);
+        }, 500);
       }
     }
   };
 
   const scrollDoctorsRight = () => {
-    if (doctorsSlide >= 0 && doctorsSlide < 4) {
+    if (doctorsSlide >= 0) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -56,10 +71,15 @@ export default function Home(props: any) {
       if (scrollableContent && Image) {
         setDoctorsSlide(slide);
         const ImageWidth = Image.offsetWidth;
-        const scrollTo = ImageWidth * slide + 10;
+        const scrollTo = ImageWidth * slide + 10 * slide;
         console.log(ImageWidth);
 
         gsap.to(scrollableContent, { x: -scrollTo, duration: 0.5 });
+        setTimeout(() => {
+          const copyOfDoctors = [...doctors];
+          copyOfDoctors.push(copyOfDoctors[doctorsSlide]);
+          setDoctors(copyOfDoctors);
+        }, 500);
       }
     }
   };
@@ -264,7 +284,7 @@ export default function Home(props: any) {
               <div className="w-full md:w-1/2">
                 <div className="my-5 slide-container doctors sm-container-padding hide-scrollbar">
                   <div className="slide-wrapper five-slides doctors ">
-                    {data?.data?.map(
+                    {doctors?.map(
                       (
                         doctor: {
                           id: string;
@@ -279,12 +299,15 @@ export default function Home(props: any) {
                             <Image
                               loader={imageLoader}
                               alt="doctor"
-                              src={doctor.attributes.avatar.data.attributes.url}
+                              src={
+                                doctor?.attributes?.avatar?.data?.attributes
+                                  ?.url
+                              }
                               fill
                             />{" "}
                             <div className="button-container">
                               {" "}
-                              <Link href={"/doctor-profile?id=" + doctor.id}>
+                              <Link href={"/doctor-profile?id=" + doctor?.id}>
                                 <button className="button button-primary button-small">
                                   Book
                                 </button>

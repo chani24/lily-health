@@ -4,7 +4,16 @@ import Image from "next/image";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import { Key, useEffect, useState } from "react";
+import {
+  JSXElementConstructor,
+  Key,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useEffect,
+  useState,
+} from "react";
 import gsap from "gsap";
 import useSWR from "swr";
 import AOS from "aos";
@@ -58,7 +67,7 @@ const availableTimes = [
 export default function Doctors(props: any) {
   useEffect(() => {
     AOS.init({
-      duration: 700,
+      duration: 1500,
     });
   }, []);
 
@@ -73,7 +82,7 @@ export default function Doctors(props: any) {
   );
 
   const { data: reviews } = useSWR(
-    "/api/doctors?populate=*&pagination[pageSize]=5&pagination[page]=1",
+    "/api/reviews?populate=*&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
   const [resources, setResources] = useState(availableTimes);
@@ -106,12 +115,12 @@ export default function Doctors(props: any) {
             <div className={"container-padding " + styles.lower}>
               <div>
                 <span className={styles.header}>
-                  {data?.data?.attributes.firstName +
+                  {data?.data?.attributes?.firstName +
                     " " +
-                    data?.data?.attributes.lastName}
+                    data?.data?.attributes?.lastName}
                 </span>
                 <span className={styles.status}>
-                  {data?.data?.attributes.profession}
+                  {data?.data?.attributes?.profession}
                 </span>
               </div>
             </div>
@@ -120,7 +129,7 @@ export default function Doctors(props: any) {
               style={{
                 backgroundImage:
                   "url(" +
-                  data?.data?.attributes.avatar.data.attributes.url +
+                  data?.data?.attributes?.avatar?.data?.attributes?.url +
                   ")",
               }}
             ></div>
@@ -129,40 +138,58 @@ export default function Doctors(props: any) {
             <div className="w-full md:w-2/3 md:pr-[80px] container-padding">
               <div>
                 <h1 className={styles.header}>Overview</h1>
-                <p className={styles.p}>{data?.data?.attributes.bio}</p>
+                <p className={styles.p}>{data?.data?.attributes?.bio}</p>
               </div>
-              <div>
+              <div className="mt-[40px]">
                 <h2 className={styles.header}>Reviews</h2>
               </div>
-              {/*<div>
-                <div className="flex items-end mt-3 mb-[-10px]">
-                  <span className={styles.name}>Veronica Sanches</span>{" "}
-                  <span className={styles.p + " mx-3"}>
-                    <svg
-                      width="2"
-                      height="3"
-                      viewBox="0 0 2 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="1"
-                        cy="1.5"
-                        r="1"
-                        fill="#111111"
-                        fillOpacity="0.8"
-                      />
-                    </svg>
-                  </span>
-                  <span className={styles.p}>12th April, 2023</span>
-                </div>
-                <p className={styles.p}>
-                  I highly recommend Dr. Temitope Aiyegbusi for his outstanding
-                  remote care. He asked the right questions, provided valuable
-                  guidance, and his expertise made the entire experience
-                  seamless and reassuring.
-                </p>
-                  </div>*/}
+              {reviews?.data?.length > 1 ? (
+                reviews.data?.map(
+                  (
+                    review: {
+                      attributes: {
+                        name: string;
+                        date: string;
+                        description: string;
+                      };
+                    },
+                    index: Key | null | undefined
+                  ) => {
+                    <div key={index}>
+                      <div className="flex items-end mt-3 mb-[-10px]">
+                        <span className={styles.name}>
+                          {review?.attributes?.name}
+                        </span>{" "}
+                        <span className={styles.p + " mx-3 mb-3"}>
+                          <svg
+                            width="2"
+                            height="3"
+                            viewBox="0 0 2 3"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle
+                              cx="1"
+                              cy="1.5"
+                              r="1"
+                              fill="#111111"
+                              fillOpacity="0.8"
+                            />
+                          </svg>
+                        </span>
+                        <span className={styles.p}>
+                          {review?.attributes?.date}
+                        </span>
+                      </div>
+                      <p className={styles.p}>
+                        {review?.attributes?.description}
+                      </p>
+                    </div>;
+                  }
+                )
+              ) : (
+                <p className={styles.p}>No reviews yet</p>
+              )}
             </div>
             <div className="w-full md:w-1/3">
               <div className="bg-light md:hidden container-padding py-4 mb-[40px] flex justify-between items-center">
@@ -325,17 +352,19 @@ export default function Doctors(props: any) {
                         <Image
                           loader={imageLoader}
                           alt="doctor"
-                          src={doctor.attributes.avatar.data.attributes.url}
+                          src={
+                            doctor?.attributes?.avatar?.data?.attributes?.url
+                          }
                           fill
                         />{" "}
                       </div>
                       <span className={styles.name}>
-                        {doctor.attributes.firstName +
+                        {doctor?.attributes?.firstName +
                           " " +
-                          doctor.attributes.lastName}
+                          doctor?.attributes?.lastName}
                       </span>
                       <span className={styles.status}>
-                        {doctor.attributes.availability
+                        {doctor?.attributes?.availability
                           ? "Available"
                           : "Unavailable"}
                       </span>

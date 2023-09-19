@@ -25,6 +25,11 @@
 width: 500%;
 }
 
+.slide-wrapper.doctors {
+width: 3000%;
+}
+
+
 .slide .button-container {
 	position: absolute;
 	bottom: 20px;

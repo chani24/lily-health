@@ -3,11 +3,18 @@ import Footer from "../_components/Footer/Footer";
 
 import styles from "./service.module.css";
 //import type { Metadata } from 'next'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import TopNav from "../_components/TopNav/TopNav";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function ResourceCenter() {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const [resources, setResources] = useState([
     {
       title: "Who we are",
@@ -77,7 +84,10 @@ export default function ResourceCenter() {
       <TopNav />
       <main>
         <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
-          <div className="md:py-[80px] flex flex-col md:flex-row md:justify-between">
+          <div
+            data-aos="fade-up"
+            className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
+          >
             <div className="w-full md:w-[45%] md:pr-[30px]">
               <h1 className={styles.header}>Resources and help center</h1>
             </div>
@@ -95,11 +105,12 @@ export default function ResourceCenter() {
           {resources.map((resource, index) => {
             return (
               <div
+                data-aos="fade-up"
                 key={index}
                 className={styles.resource_container + " bg-light"}
-                onClick={() => toggleResource(index)}
               >
                 <div
+                  onClick={() => toggleResource(index)}
                   className={
                     "flex justify-between items-center " + styles.upper_div
                   }

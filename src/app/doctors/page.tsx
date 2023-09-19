@@ -18,7 +18,7 @@ import { fetcher, imageLoader } from "../_lib/strapi-rest";
 export default function Doctors() {
   useEffect(() => {
     AOS.init({
-      duration: 800,
+      duration: 1500,
     });
   }, []);
 
@@ -70,14 +70,16 @@ export default function Doctors() {
                         <Image
                           loader={imageLoader}
                           alt="doctor"
-                          src={doctor.attributes.avatar.data.attributes.url}
+                          src={
+                            doctor?.attributes?.avatar?.data?.attributes?.url
+                          }
                           fill
                         />{" "}
                       </div>
                       <span className={styles.name}>
-                        {doctor.attributes.firstName +
+                        {doctor?.attributes?.firstName +
                           " " +
-                          doctor.attributes.lastName}
+                          doctor?.attributes?.lastName}
                       </span>
                       <span className={styles.status}>
                         {doctor.attributes.availability

@@ -15,7 +15,7 @@ import { useEffect } from "react";
 export default function Gallery() {
   useEffect(() => {
     AOS.init({
-      duration: 800,
+      duration: 2000,
     });
   }, []);
   return (
