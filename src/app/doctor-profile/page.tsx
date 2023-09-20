@@ -84,7 +84,9 @@ export default function Doctors(props: any) {
   );
 
   const { data: reviews } = useSWR(
-    "/api/reviews?populate=*&filters[doctor][id][$eq]=1&pagination[pageSize]=3&pagination[page]=1",
+    "/api/reviews?populate=*&filters[doctor][id][$eq]=" +
+      props.searchParams.id +
+      "&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
   const [resources, setResources] = useState(availableTimes);
