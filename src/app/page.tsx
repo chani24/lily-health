@@ -131,11 +131,20 @@ export default function Home(props: any) {
           data-aos="fade-up"
           className="mt-3 mb-5 slide-container container-padding"
         >
-          <div className="slide-wrapper">
+          <div className="slide-wrapper six-slides horizontal-scrolling-items">
             <div className="slide">
               <Image alt="infant" src="/images/infant.png" fill />{" "}
             </div>
-            <div className="slide middle-slide">
+            <div className="slide">
+              <Image alt="infant" src="/images/infant-2.png" fill />
+            </div>
+            <div className="slide">
+              <Image alt="infant" src="/images/infant-3.png" fill />
+            </div>
+            <div className="slide">
+              <Image alt="infant" src="/images/infant.png" fill />{" "}
+            </div>
+            <div className="slide">
               <Image alt="infant" src="/images/infant-2.png" fill />
             </div>
             <div className="slide">
@@ -182,7 +191,7 @@ export default function Home(props: any) {
               data-aos="fade-up"
               className="my-5 slide-container container-padding"
             >
-              <div className="slide-wrapper">
+              <div className="slide-wrapper six-slides horizontal-scrolling-items">
                 <div className="slide">
                   <Image
                     alt="man and infant"
@@ -190,7 +199,28 @@ export default function Home(props: any) {
                     fill
                   />{" "}
                 </div>
-                <div className="slide middle-slide">
+                <div className="slide">
+                  <Image
+                    alt="man and infant"
+                    src="/images/man-and-infant-2.png"
+                    fill
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    alt="woman and infant"
+                    src="/images/woman-and-infant.png"
+                    fill
+                  />
+                </div>
+                <div className="slide">
+                  <Image
+                    alt="man and infant"
+                    src="/images/man-and-infant.png"
+                    fill
+                  />{" "}
+                </div>
+                <div className="slide">
                   <Image
                     alt="man and infant"
                     src="/images/man-and-infant-2.png"
@@ -214,7 +244,7 @@ export default function Home(props: any) {
               data-aos="fade-up"
               className="flex flex-col md:flex-row md:justify-between"
             >
-              <div className="container-padding w-full md:w-[45%] md:pr-[50px]">
+              <div className="container-padding flex flex-col w-full md:w-[45%] md:pr-[50px] md:justify-center">
                 <h3 className="h3">
                   Glance through the top professionals on our platform.
                 </h3>
@@ -222,7 +252,7 @@ export default function Home(props: any) {
                   Get comprehensive in-person and virtual care to support your
                   physical, mental and reproductive health.
                 </p>
-                <div className="my-[24px] md:my-[64px] flex gap-3">
+                <div className="my-[24px] md:mt-[36px] flex gap-3">
                   <svg
                     onClick={scrollDoctorsLeft}
                     className="arrow-button"
@@ -408,11 +438,11 @@ export default function Home(props: any) {
               data-aos="fade-up"
               className="my-5 slide-container container-padding"
             >
-              <div className="slide-wrapper five-slides">
-                <div className="slide">
+              <div className="slide-wrapper ten-slides horizontal-scrolling-items">
+                <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-4.png" fill />{" "}
                 </div>
-                <div className="slide bg-[#FF086F] rounded-lg container-padding py-3 flex flex-col justify-between text-white">
+                <div className="slide bg-[#FF086F] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
                     LILY Health empowers women and couples with tailored, safe,
                     and accessible fertility treatments, focusing on
@@ -420,10 +450,10 @@ export default function Home(props: any) {
                   </p>
                   <p className="text-2xl font-semibold">Anonymous</p>
                 </div>
-                <div className="slide">
+                <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant.png" fill />
                 </div>
-                <div className="slide bg-[#FB5B46] rounded-lg container-padding py-3 flex flex-col justify-between text-white">
+                <div className="slide bg-[#FB5B46] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
                     LILY Health empowers women and couples with tailored, safe,
                     and accessible fertility treatments, focusing on
@@ -431,7 +461,32 @@ export default function Home(props: any) {
                   </p>
                   <p className="text-2xl font-semibold">Anonymous</p>
                 </div>
-                <div className="slide">
+                <div className="slide horizontal-scrolling-items__item">
+                  <Image alt="infant" src="/images/infant-2.png" fill />
+                </div>
+                <div className="slide horizontal-scrolling-items__item">
+                  <Image alt="infant" src="/images/infant-4.png" fill />{" "}
+                </div>
+                <div className="slide bg-[#FF086F] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                  <p className="text-xl">
+                    LILY Health empowers women and couples with tailored, safe,
+                    and accessible fertility treatments, focusing on
+                    compassionate care and patient-centered strategies.
+                  </p>
+                  <p className="text-2xl font-semibold">Anonymous</p>
+                </div>
+                <div className="slide horizontal-scrolling-items__item">
+                  <Image alt="infant" src="/images/infant.png" fill />
+                </div>
+                <div className="slide bg-[#FB5B46] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                  <p className="text-xl">
+                    LILY Health empowers women and couples with tailored, safe,
+                    and accessible fertility treatments, focusing on
+                    compassionate care and patient-centered strategies.
+                  </p>
+                  <p className="text-2xl font-semibold">Anonymous</p>
+                </div>
+                <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-2.png" fill />
                 </div>
               </div>

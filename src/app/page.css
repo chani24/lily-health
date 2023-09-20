@@ -21,9 +21,18 @@
 	position: relative;
 }
 
+
 .slide-wrapper.five-slides {
 width: 500%;
 }
+
+.slide-wrapper.six-slides {
+	width: 600%;
+	}
+
+.slide-wrapper.ten-slides {
+	width: 1000%;
+	}
 
 .slide-wrapper.doctors {
 width: 3000%;
@@ -119,21 +128,60 @@ width: 3000%;
 	line-height: 120%;
 }
 
+  @keyframes infiniteScroll {
+	from {transform: translateX(0) }
+	to {transform: translateX(calc(0px - 50%));}
+  }
+
+  @keyframes reverseInfiniteScroll {
+	from { transform: translateX(calc(0px - 50%)); }
+  to { transform: translateX(0); }
+  }
+  .horizontal-scrolling-items {
+	display: flex;
+	animation-name: infiniteScroll;
+	animation-duration: 17s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	touch-action: pan-y;
+  }
+  .horizontal-scrolling-items.reverse {
+	animation-name: reverseInfiniteScroll;
+  }
+
+
+
+
 @media (min-width: 640px) {
 	.slide-container:not(.doctors) {
 		overflow-x: hidden;
 	}
 
 	.slide-wrapper:not(.doctors) {
-		width: 100%;
 		display: flex;
 		gap: 10px;
 	}
 
-	.slide {
-		width: 33%;
-		height: 471px;
+	.slide-wrapper.ten-slides{
+		width: 5000px;
 	}
+
+	.slide {
+		height: 400px;
+	}
+
+	.slide-wrapper.ten-slides .slide {
+		width: 500px;
+	}
+
+	.slide-wrapper.six-slides {
+		width: 3000px;
+		}
+
+		.slide-wrapper.six-slides  .slide{
+			width: 500px;
+			}
+
 
 	.slide.doctors {
 		width: 300px;

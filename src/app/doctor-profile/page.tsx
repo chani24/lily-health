@@ -22,7 +22,7 @@ import "aos/dist/aos.css";
 import TopNav from "../_components/TopNav/TopNav";
 import { fetcher, imageLoader } from "../_lib/strapi-rest";
 import Link from "next/link";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import formatDate from "../_lib/formatDate";
 
 const doctors = [
   {
@@ -77,12 +77,14 @@ export default function Doctors(props: any) {
   );
 
   const { data: topDoctors } = useSWR(
-    "/api/doctors?populate=*&pagination[pageSize]=3&pagination[page]=1",
+    "/api/doctors?populate=*&filters[id][$ne]=" +
+      props.searchParams.id +
+      "&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
 
   const { data: reviews } = useSWR(
-    "/api/reviews?populate=*&pagination[pageSize]=3&pagination[page]=1",
+    "/api/reviews?populate=*&filters[doctor][id][$eq]=1&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
   const [resources, setResources] = useState(availableTimes);
@@ -148,43 +150,60 @@ export default function Doctors(props: any) {
                   (
                     review: {
                       attributes: {
-                        name: string;
+                        createdAt: string;
+                        users_permissions_user: {
+                          data: {
+                            attributes: {
+                              firstName: string;
+                              lastName: string;
+                            };
+                          };
+                        };
                         date: string;
                         description: string;
                       };
                     },
                     index: Key | null | undefined
                   ) => {
-                    <div key={index}>
-                      <div className="flex items-end mt-3 mb-[-10px]">
-                        <span className={styles.name}>
-                          {review?.attributes?.name}
-                        </span>{" "}
-                        <span className={styles.p + " mx-3 mb-3"}>
-                          <svg
-                            width="2"
-                            height="3"
-                            viewBox="0 0 2 3"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <circle
-                              cx="1"
-                              cy="1.5"
-                              r="1"
-                              fill="#111111"
-                              fillOpacity="0.8"
-                            />
-                          </svg>
-                        </span>
-                        <span className={styles.p}>
-                          {review?.attributes?.date}
-                        </span>
+                    return (
+                      <div key={index}>
+                        <div className="flex items-end mt-3 mb-[-10px]">
+                          <span className={styles.name}>
+                            {
+                              review?.attributes?.users_permissions_user?.data
+                                ?.attributes?.firstName
+                            }{" "}
+                            {
+                              review?.attributes?.users_permissions_user?.data
+                                ?.attributes?.lastName
+                            }
+                          </span>{" "}
+                          <span className={styles.p + " mx-3 mb-3"}>
+                            <svg
+                              width="2"
+                              height="3"
+                              viewBox="0 0 2 3"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <circle
+                                cx="1"
+                                cy="1.5"
+                                r="1"
+                                fill="#111111"
+                                fillOpacity="0.8"
+                              />
+                            </svg>
+                          </span>
+                          <span className={styles.p}>
+                            {formatDate(review?.attributes?.createdAt)}
+                          </span>
+                        </div>
+                        <p className={styles.p}>
+                          {review?.attributes?.description}
+                        </p>
                       </div>
-                      <p className={styles.p}>
-                        {review?.attributes?.description}
-                      </p>
-                    </div>;
+                    );
                   }
                 )
               ) : (
@@ -204,7 +223,7 @@ export default function Doctors(props: any) {
                 </button>
               </div>
               <div className="hidden md:block">
-                <p className={styles.header + " mb-5"}>Book other doctors</p>
+                <p className={styles.header + " mb-5"}>Available Sessions</p>
                 <span className={"mt-[-8px] " + styles.p}>
                   Schedule one-on-one sessions based on your preference.
                 </span>
@@ -226,7 +245,11 @@ export default function Doctors(props: any) {
                             <h4>{resource.date}</h4>
                           </div>
 
-                          <div>
+                          <div className="flex items-center">
+                            <div className={styles.pill}>
+                              {resource.times.length}
+                              {" slot(s)"}
+                            </div>
                             {resource.isOpen ? (
                               <svg
                                 width="20"
@@ -238,9 +261,9 @@ export default function Doctors(props: any) {
                                 <path
                                   d="M15 13L10 8L5 13"
                                   stroke="#404D78"
-                                  stroke-width="1.66667"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeWidth="1.66667"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                 />
                               </svg>
                             ) : (
@@ -254,9 +277,9 @@ export default function Doctors(props: any) {
                                 <path
                                   d="M5 8L10 13L15 8"
                                   stroke="#404D78"
-                                  stroke-width="1.66667"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeWidth="1.66667"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                 />
                               </svg>
                             )}
@@ -336,7 +359,7 @@ export default function Doctors(props: any) {
                   id: string;
                   attributes: {
                     avatar: {
-                      data: { attributes: { url: string | StaticImport } };
+                      data: { attributes: { url: string } };
                     };
                     firstName: string;
                     lastName: string;
