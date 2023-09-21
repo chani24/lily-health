@@ -39,7 +39,15 @@ export default function Footer() {
       <div className={"container-padding " + styles.footer}>
         <div className="grid grid-cols-12">
           <div className="col-span-12 md:col-span-6 mb-5 md:mb-0 ">
-            <p className={"mb-3 md:mb-5 " + styles.title}>Lily Health</p>
+            <div className={"mb-3 md:mb-5 " + styles.title}>
+              <Image
+                className={styles.logo}
+                alt="lily logo"
+                src="/logo.svg"
+                width={32.64}
+                height={17.973}
+              />
+            </div>
             <p className={styles.description}>
               Search through our platform with a robust range of medical
               professionals

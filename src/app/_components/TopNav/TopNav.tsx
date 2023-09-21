@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./topnav.module.css";
 import { useState } from "react";
 import gsap from "gsap";
@@ -33,14 +34,6 @@ export default function TopNav() {
   const closeNav = () => {
     setNav(false);
     closeDropdown();
-  };
-
-  const openSearch = () => {
-    gsap.to("." + styles.search_container, {
-      width: "80px",
-      duration: 0.5,
-      ease: "power2.inOut",
-    });
   };
 
   return (
@@ -99,14 +92,18 @@ export default function TopNav() {
             </svg>
           )}
           <Link href="/" className="text-white ms-5 md:text-2xl font-medium">
-            Lily Health
+            <Image
+              className={styles.logo}
+              alt="lily logo"
+              src="/logo.svg"
+              width={32.64}
+              height={17.973}
+            />
           </Link>
         </div>
         <div className="flex items-center">
           <div className={styles.search_bar}>
-            <div className={styles.search_container}></div>
             <svg
-              onClick={openSearch}
               width="24"
               height="24"
               viewBox="0 0 24 24"

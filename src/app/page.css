@@ -39,7 +39,7 @@ width: 3000%;
 }
 
 .doctor-card{
-	border: 1px solid #0000000e;
+	border: 1px solid #00000005;
 	
 	
 }
@@ -327,7 +327,4 @@ margin-top: 8px;
 	letter-spacing: -0.64px;
 }
 
-.doctor-card_footer button{
-	margin-top: 0px;
-}
 }

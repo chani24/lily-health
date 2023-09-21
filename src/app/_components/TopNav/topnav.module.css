@@ -9,6 +9,11 @@
     position: relative;
     z-index: 4;
 }
+
+.logo{
+  width: 67px;
+  height: 36.893px;
+}
 .dropdown_wrapper{
   
   position: absolute;
@@ -58,7 +63,11 @@ align-items: center;
   justify-content: start;
   gap: 32px;
   font-size: 32px;
-  }
+  } 
+       .logo{
+        width: 32.64px;
+        height: 17.973px;
+      }
 }
 
 @media screen and (max-width: 479px){
@@ -79,6 +88,8 @@ align-items: center;
       width: 12px;
       height: 12px;
       }
+
+
 }
 
 

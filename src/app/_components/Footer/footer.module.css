@@ -23,9 +23,19 @@ margin-bottom: 20px;
 font-size: 20px;
 }
 
+.logo{
+  height: 83px;
+  width: 150.75px;
+}
+
 @media screen and (max-width: 767px){
   .top_nav{
     height: 75px;
+}
+
+.logo{
+  width: 100.5px;
+  height: 57.6px;
 }
 }
 

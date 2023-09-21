@@ -202,7 +202,7 @@ export default function Home(props: any) {
                   has to deal with the loss I experienced.
                 </p>
                 <Link href="about-us">
-                  <button className="button button-light mt-3">
+                  <button className="button button-light mt-3 button-small">
                     Read more
                   </button>
                 </Link>
@@ -351,7 +351,7 @@ export default function Home(props: any) {
                         return (
                           <div
                             key={index}
-                            className="slide doctors doctor-card"
+                            className="slide doctors doctor-card md:min-w-[408px]"
                           >
                             <Image
                               loader={imageLoader}
