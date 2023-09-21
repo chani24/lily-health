@@ -34,7 +34,7 @@ export default function Home(props: any) {
   const [doctorsSlide, setDoctorsSlide] = useState(0);
 
   const scrollDoctorsLeft = () => {
-    if (doctorsSlide > 0) {
+    if (doctorsSlide > 0 && doctorsSlide <= 4) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -49,19 +49,11 @@ export default function Home(props: any) {
 
         gsap.to(scrollableContent, { x: -scrollTo, duration: 0.5 });
       }
-
-      if (slide === 0) {
-        setTimeout(() => {
-          const copyOfDoctors = [...doctors];
-          copyOfDoctors.length = 5;
-          setDoctors(copyOfDoctors);
-        }, 500);
-      }
     }
   };
 
   const scrollDoctorsRight = () => {
-    if (doctorsSlide >= 0) {
+    if (doctorsSlide >= 0 && doctorsSlide < 4) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -72,14 +64,20 @@ export default function Home(props: any) {
         setDoctorsSlide(slide);
         const ImageWidth = Image.offsetWidth;
         const scrollTo = ImageWidth * slide + 10 * slide;
-        console.log(ImageWidth);
 
         gsap.to(scrollableContent, { x: -scrollTo, duration: 0.5 });
-        setTimeout(() => {
-          const copyOfDoctors = [...doctors];
-          copyOfDoctors.push(copyOfDoctors[doctorsSlide]);
-          setDoctors(copyOfDoctors);
-        }, 500);
+      }
+    }
+
+    if (doctorsSlide === 4) {
+      const scrollableContent = document.querySelector(
+        ".slide-wrapper.doctors"
+      ) as HTMLElement;
+
+      if (scrollableContent) {
+        setDoctorsSlide(0);
+
+        gsap.to(scrollableContent, { x: 0, duration: 0.5 });
       }
     }
   };
@@ -101,7 +99,30 @@ export default function Home(props: any) {
                 />
                 Thousands of professionals available at your disposal!
               </div>
-              <div className="text-lg font-semibold">Search</div>
+              <div>
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.5 21.5C16.7467 21.5 21 17.2467 21 12C21 6.75329 16.7467 2.5 11.5 2.5C6.25329 2.5 2 6.75329 2 12C2 17.2467 6.25329 21.5 11.5 21.5Z"
+                    stroke="#FF086F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 22.5L20 20.5"
+                    stroke="#FF086F"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
             <h1
               data-aos="fade-up"
@@ -239,7 +260,7 @@ export default function Home(props: any) {
           </div>
         </div>
         <div className="sm-container-padding pt-5 md:pt-0">
-          <div className="bg-lighter py-8 rounded-lg md:rounded-none">
+          <div className="bg-[#ffffff26] md:bg-[#fff] py-8 rounded-lg md:rounded-none">
             <div
               data-aos="fade-up"
               className="flex flex-col md:flex-row md:justify-between"
@@ -252,7 +273,7 @@ export default function Home(props: any) {
                   Get comprehensive in-person and virtual care to support your
                   physical, mental and reproductive health.
                 </p>
-                <div className="my-[24px] md:mt-[36px] flex gap-3">
+                <div className="hidden md:flex my-[24px] md:mt-[36px] gap-3">
                   <svg
                     onClick={scrollDoctorsLeft}
                     className="arrow-button"
@@ -319,13 +340,19 @@ export default function Home(props: any) {
                         doctor: {
                           id: string;
                           attributes: {
+                            firstName: string;
+                            lastName: string;
+                            profession: string;
                             avatar: { data: { attributes: { url: string } } };
                           };
                         },
                         index: number
                       ) => {
                         return (
-                          <div key={index} className="slide doctors">
+                          <div
+                            key={index}
+                            className="slide doctors doctor-card"
+                          >
                             <Image
                               loader={imageLoader}
                               alt="doctor"
@@ -335,13 +362,22 @@ export default function Home(props: any) {
                               }
                               fill
                             />{" "}
-                            <div className="button-container">
+                            <div className="doctor-card_footer md:grid md:grid-cols-5">
                               {" "}
-                              <Link href={"/doctor-profile?id=" + doctor?.id}>
-                                <button className="button button-primary button-small">
-                                  Book
-                                </button>
-                              </Link>
+                              <div className="md:col-span-3">
+                                <div className="name">
+                                  {doctor?.attributes?.firstName}{" "}
+                                  {doctor?.attributes?.lastName}
+                                </div>
+                                <div className="title">
+                                  {doctor?.attributes?.profession}
+                                </div>
+                              </div>
+                              <div className="md:col-span-2">
+                                <Link href={"/doctor-profile?id=" + doctor?.id}>
+                                  <button>Book</button>
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         );
@@ -349,6 +385,64 @@ export default function Home(props: any) {
                     )}
                   </div>
                 </div>
+              </div>
+              <div className="container-padding my-[24px] md:mt-[36px] flex gap-3 md:hidden">
+                <svg
+                  onClick={scrollDoctorsLeft}
+                  className="arrow-button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 60 60"
+                  fill="none"
+                >
+                  <rect width="60" height="60" rx="30" fill="#FF086F" />
+                  <path
+                    d="M27.57 23.9299L21.5 29.9999L27.57 36.0699"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M38.5 30H21.67"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <svg
+                  onClick={scrollDoctorsRight}
+                  className="arrow-button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 60 60"
+                  fill="none"
+                >
+                  <rect
+                    width="60"
+                    height="60"
+                    rx="30"
+                    transform="matrix(-1 0 0 1 60 0)"
+                    fill="#FF086F"
+                  />
+                  <path
+                    d="M32.43 23.9299L38.5 29.9999L32.43 36.0699"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M21.5 30H38.33"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
             </div>
           </div>

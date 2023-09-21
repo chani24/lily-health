@@ -17,49 +17,49 @@ export default function ResourceCenter() {
   }, []);
   const [resources, setResources] = useState([
     {
-      title: "Who we are",
+      title: "Medical Consultations",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "What we do",
+      title: "Wellness Programs",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "Our Services",
+      title: "Home Healthcare",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "Our Values",
+      title: "Pharmacy Services",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "Book a Doctor",
+      title: "Health Education",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "The Lily Way",
+      title: "Pediatric Care",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "Our Misson",
+      title: "Health Screenings",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
     },
     {
-      title: "Our Vision",
+      title: "Health Technology",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
       isOpen: false,
@@ -89,7 +89,7 @@ export default function ResourceCenter() {
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[45%] md:pr-[30px]">
-              <h1 className={styles.header}>Resources and help center</h1>
+              <h1 className={styles.header}>Services we offer</h1>
             </div>
             <div className="w-full md:w-1/2">
               <p>

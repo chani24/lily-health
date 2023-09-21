@@ -44,12 +44,6 @@ export default function SignUp() {
                 <input placeholder="*******" type="password" name="password" />
               </div>
             </form>
-            <div className="text-right hidden md:block md:mt-[-20px]">
-              {" "}
-              <Link href="sign-up">
-                <span className="text-[#666B73]">Forgot password?</span>
-              </Link>
-            </div>
             <div className="my-7 max-w-3xl">
               <button className="button button-primary w-full inverse-size-button">
                 Sign in

@@ -35,6 +35,14 @@ export default function TopNav() {
     closeDropdown();
   };
 
+  const openSearch = () => {
+    gsap.to("." + styles.search_container, {
+      width: "80px",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  };
+
   return (
     <div className="relative bg-white">
       <div className={"container-padding " + styles.top_nav}>
@@ -96,7 +104,9 @@ export default function TopNav() {
         </div>
         <div className="flex items-center">
           <div className={styles.search_bar}>
+            <div className={styles.search_container}></div>
             <svg
+              onClick={openSearch}
               width="24"
               height="24"
               viewBox="0 0 24 24"

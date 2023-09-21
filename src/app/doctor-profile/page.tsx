@@ -4,16 +4,7 @@ import Image from "next/image";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import {
-  JSXElementConstructor,
-  Key,
-  PromiseLikeOfReactNode,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-  useEffect,
-  useState,
-} from "react";
+import { Key, useEffect, useState } from "react";
 import gsap from "gsap";
 import useSWR from "swr";
 import AOS from "aos";
@@ -23,24 +14,6 @@ import TopNav from "../_components/TopNav/TopNav";
 import { fetcher, imageLoader } from "../_lib/strapi-rest";
 import Link from "next/link";
 import formatDate from "../_lib/formatDate";
-
-const doctors = [
-  {
-    name: "Bola Akintayo",
-    status: "Available",
-    image: "doctor-3",
-  },
-  {
-    name: "Bello Chan",
-    status: "Available",
-    image: "doctor",
-  },
-  {
-    name: "Celine Elumelu",
-    status: "Available",
-    image: "doctor-2",
-  },
-];
 
 const availableTimes = [
   {
@@ -118,7 +91,7 @@ export default function Doctors(props: any) {
             <div className={styles.upper}></div>
             <div className={"container-padding " + styles.lower}>
               <div>
-                <span className={styles.header}>
+                <span className={styles.name}>
                   {data?.data?.attributes?.firstName +
                     " " +
                     data?.data?.attributes?.lastName}
@@ -170,7 +143,7 @@ export default function Doctors(props: any) {
                     return (
                       <div key={index}>
                         <div className="flex items-end mt-3 mb-[-10px]">
-                          <span className={styles.name}>
+                          <span className={styles.name_small}>
                             {
                               review?.attributes?.users_permissions_user?.data
                                 ?.attributes?.firstName
@@ -213,7 +186,7 @@ export default function Doctors(props: any) {
               )}
             </div>
             <div className="w-full md:w-1/3">
-              <div className="bg-light md:hidden container-padding py-4 mb-[40px] flex justify-between items-center">
+              <div className="z-40 bg-[#FDEFF0] fixed bottom-0 left-0 w-full md:hidden container-padding py-4 flex justify-between items-center">
                 <div>
                   <span className={styles.name + " mb-[-8px]"}>
                     09 Sep 2023, 4:15pm
@@ -360,6 +333,7 @@ export default function Doctors(props: any) {
                 doctor: {
                   id: string;
                   attributes: {
+                    profession: string;
                     avatar: {
                       data: { attributes: { url: string } };
                     };
@@ -372,7 +346,7 @@ export default function Doctors(props: any) {
               ) => {
                 return (
                   <Link key={index} href={"/doctor-profile?id=" + doctor.id}>
-                    <div className={styles.collage_block}>
+                    <div className={styles.collage_block + " doctor-card"}>
                       <div className={styles.collage_image}>
                         <Image
                           loader={imageLoader}
@@ -382,17 +356,24 @@ export default function Doctors(props: any) {
                           }
                           fill
                         />{" "}
+                        <div className="doctor-card_footer">
+                          {" "}
+                          <div>
+                            <div className="pill">
+                              {doctor?.attributes?.availability
+                                ? "Available"
+                                : "Unavailable"}
+                            </div>
+                            <div className="name">
+                              {doctor?.attributes?.firstName}{" "}
+                              {doctor?.attributes?.lastName}
+                            </div>
+                            <div className="title">
+                              {doctor?.attributes?.profession}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <span className={styles.name}>
-                        {doctor?.attributes?.firstName +
-                          " " +
-                          doctor?.attributes?.lastName}
-                      </span>
-                      <span className={styles.status}>
-                        {doctor?.attributes?.availability
-                          ? "Available"
-                          : "Unavailable"}
-                      </span>
                     </div>
                   </Link>
                 );
@@ -402,6 +383,7 @@ export default function Doctors(props: any) {
         </div>
       </main>
       <Footer />
+      <div className="pb-[115px] md:pb-0"></div>
     </>
   );
 }

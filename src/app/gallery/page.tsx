@@ -55,78 +55,150 @@ export default function Gallery() {
               </p>
             </div>
           </div>
-          <div className={"my-5 " + styles.collage_container}>
-            <div className={styles.collage_wrapper}>
-              <div data-aos="fade-up" className={styles.collage_image}>
+          <div
+            data-aos="fade-up"
+            className="my-5 slide-container container-padding"
+          >
+            <div className="slide-wrapper six-slides horizontal-scrolling-items">
+              <div className="slide">
                 <Image alt="infant" src="/images/infant.png" fill />{" "}
               </div>
-              <div
-                data-aos="fade-up"
-                className={styles.collage_image + " " + styles.large}
-              >
+              <div className="slide">
                 <Image alt="infant" src="/images/infant-2.png" fill />
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
                 <Image alt="infant" src="/images/infant-3.png" fill />
               </div>
-              <div
-                data-aos="fade-up"
-                className={styles.collage_image + " " + styles.large}
-              >
-                <Image alt="infant" src="/images/infant-4.png" fill />
+              <div className="slide">
+                <Image alt="infant" src="/images/infant.png" fill />{" "}
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-2.png" fill />
+              </div>
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-3.png" fill />
+              </div>
+            </div>
+          </div>
+          <div
+            data-aos="fade-up"
+            className="my-5 slide-container container-padding"
+          >
+            <div className="slide-wrapper six-slides horizontal-scrolling-items reverse">
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-4.png" fill />{" "}
+              </div>
+              <div className="slide">
                 <Image
                   alt="man and infant"
                   src="/images/man-and-infant-2.png"
                   fill
-                />{" "}
+                />
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
                 <Image
                   alt="man and infant"
                   src="/images/man-and-infant-.png"
                   fill
                 />
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-4.png" fill />{" "}
+              </div>
+              <div className="slide">
+                <Image
+                  alt="man and infant"
+                  src="/images/man-and-infant-2.png"
+                  fill
+                />
+              </div>
+              <div className="slide">
+                <Image
+                  alt="man and infant"
+                  src="/images/man-and-infant-.png"
+                  fill
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            data-aos="fade-up"
+            className="my-5 slide-container container-padding"
+          >
+            <div className="slide-wrapper six-slides horizontal-scrolling-items">
+              <div className="slide">
                 <Image
                   alt="woman and infant"
                   src="/images/woman-and-infant-2.png"
                   fill
                 />{" "}
               </div>
-              <div
-                data-aos="fade-up"
-                className={styles.collage_image + " " + styles.large}
-              >
+              <div className="slide">
                 <Image
                   alt="man woman and infant"
                   src="/images/man-woman-and-infant.png"
                   fill
                 />
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
                 <Image
                   alt="woman and infant"
                   src="/images/woman-and-infant.png"
                   fill
                 />
               </div>
-              <div
-                data-aos="fade-up"
-                className={styles.collage_image + " " + styles.large}
-              >
+              <div className="slide">
+                <Image
+                  alt="woman and infant"
+                  src="/images/woman-and-infant-2.png"
+                  fill
+                />{" "}
+              </div>
+              <div className="slide">
+                <Image
+                  alt="man woman and infant"
+                  src="/images/man-woman-and-infant.png"
+                  fill
+                />
+              </div>
+              <div className="slide">
+                <Image
+                  alt="woman and infant"
+                  src="/images/woman-and-infant.png"
+                  fill
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            data-aos="fade-up"
+            className="my-5 slide-container container-padding"
+          >
+            <div className="slide-wrapper six-slides horizontal-scrolling-items reverse">
+              <div className="slide">
                 <Image
                   alt="woman and infant"
                   src="/images/woman-and-infant-3.png"
                   fill
-                />
+                />{" "}
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
-                <Image alt="infant" src="/images/infant-5.png" fill />{" "}
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-5.png" fill />
               </div>
-              <div data-aos="fade-up" className={styles.collage_image}>
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-6.png" fill />
+              </div>
+              <div className="slide">
+                <Image
+                  alt="woman and infant"
+                  src="/images/woman-and-infant-3.png"
+                  fill
+                />{" "}
+              </div>
+              <div className="slide">
+                <Image alt="infant" src="/images/infant-5.png" fill />
+              </div>
+              <div className="slide">
                 <Image alt="infant" src="/images/infant-6.png" fill />
               </div>
             </div>

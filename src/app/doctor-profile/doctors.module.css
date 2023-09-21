@@ -45,7 +45,6 @@ letter-spacing: -0.64px;
 }
 
 .collage_block{
-  height: 440px;
   display: flex;
   flex-direction: column;
 }
@@ -62,11 +61,19 @@ letter-spacing: -0.64px;
 }
 
 .name{
-  color: #000;
+  color: #FF086F;
   font-size: 18px;
   font-weight: 600;
   display: block;
   padding-top: 8px;
+letter-spacing: -0.72px;
+}
+
+.name_small{
+  color: #FF0970;
+font-size: 16px;
+font-weight: 500;
+letter-spacing: -0.64px;
 }
 .status{
   color: #111;
@@ -76,10 +83,10 @@ letter-spacing: -0.64px;
 }
 
   .header{
-    color: #111;
+    color: #FF0970;
 font-size: 20px;
 font-weight: 600;
-letter-spacing: -0.72px;
+letter-spacing: -0.96px;
   }
 
   .btn{
@@ -163,6 +170,10 @@ margin-right: 16px;
         }
 
         .name{
+          font-size: 24px;
+        }
+
+        .name_small{
           font-size: 20px;
         }
 }
