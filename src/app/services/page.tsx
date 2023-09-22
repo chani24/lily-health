@@ -83,7 +83,7 @@ export default function ResourceCenter() {
     <>
       <TopNav />
       <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
+        <div className="bg-lighter md:bg-[#fff] py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
             data-aos="fade-up"
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
@@ -94,14 +94,14 @@ export default function ResourceCenter() {
             <div className="w-full md:w-1/2">
               <p>
                 Lily health, established in 2021 , was created with the aim to
-                provide products, services, and resources  that ensure women
+                provide products, services, and resources that ensure women
                 experience maximum health and wellness stability especially
                 concerning fertility.
               </p>
             </div>
           </div>
         </div>
-        <div className="container-padding mt-3 grid grid-cols-1 gap-3">
+        <div className="container-padding mt-3 grid grid-cols-1 gap-3 md:px-[148px]">
           {resources.map((resource, index) => {
             return (
               <div

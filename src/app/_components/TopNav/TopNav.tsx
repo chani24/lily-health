@@ -5,11 +5,16 @@ import Image from "next/image";
 import styles from "./topnav.module.css";
 import { useState } from "react";
 import gsap from "gsap";
+import Search from "../Search";
 
-export default function TopNav() {
-  // Function to open the dropdown
+export default function TopNav(props: {
+  searchDropdown?: boolean;
+  setSearchDropdown?: any;
+}) {
+  const [dropdown, setDropdown] = useState(false);
   const openDropdown = () => {
-    gsap.to("." + styles.dropdown_wrapper, {
+    setDropdown(true);
+    gsap.to(".search-dropdown", {
       height: "100vh",
       duration: 0.5,
       ease: "power2.inOut",
@@ -18,7 +23,9 @@ export default function TopNav() {
 
   // Function to close the dropdown
   const closeDropdown = () => {
-    gsap.to("." + styles.dropdown_wrapper, {
+    setDropdown(false);
+    props.setSearchDropdown(false);
+    gsap.to(".search-dropdown", {
       height: 0,
       duration: 0.5,
       ease: "power2.inOut",
@@ -102,30 +109,56 @@ export default function TopNav() {
           </Link>
         </div>
         <div className="flex items-center">
-          <div className={styles.search_bar}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-                stroke="#FF086F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M22 22L20 20"
-                stroke="#FF086F"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+          {props.searchDropdown || dropdown ? (
+            <div onClick={closeDropdown} className={styles.search_bar}>
+              <svg
+                width="21"
+                height="20"
+                viewBox="0 0 21 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  width="2"
+                  height="25"
+                  transform="translate(1.07861 1.41431) rotate(-45)"
+                  fill="#FF086F"
+                />
+                <rect
+                  width="2"
+                  height="25"
+                  transform="translate(17.6777 0.111328) rotate(45)"
+                  fill="#FF086F"
+                />
+              </svg>
+            </div>
+          ) : (
+            <div onClick={openDropdown} className={styles.search_bar}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                  stroke="#FF086F"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M22 22L20 20"
+                  stroke="#FF086F"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          )}
+
           <Link href="/login">
             <button className="button button-light ms-5 hidden md:block">
               Login
@@ -133,6 +166,7 @@ export default function TopNav() {
           </Link>
         </div>
       </div>
+      <Search className="search-dropdown" />
       <div className={styles.dropdown_wrapper}>
         <div className={"container-padding " + styles.top_nav__dropdown}>
           <div className="md:hidden">

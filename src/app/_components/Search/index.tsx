@@ -1,56 +1,84 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import styles from "./index.module.css";
+import { useState } from "react";
+import gsap from "gsap";
+import { fetcher, imageLoader } from "@/app/_lib/strapi-rest";
 
-import Footer from "../_components/Footer/Footer";
-
-import styles from "./doctors.module.css";
-import type { Metadata } from "next";
-import TopNav from "../_components/TopNav/TopNav";
-import useSWR from "swr";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-import { fetcher, imageLoader } from "../_lib/strapi-rest";
-
-export default function Doctors() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1500,
+export default function Search(props: { className: string }) {
+  // Function to open the dropdown
+  const openDropdown = () => {
+    gsap.to("." + styles.dropdown_wrapper, {
+      height: "100vh",
+      duration: 0.5,
+      ease: "power2.inOut",
     });
-  }, []);
+  };
 
-  const { data, error } = useSWR("/api/doctors?populate=*", fetcher);
+  // Function to close the dropdown
+  const closeDropdown = () => {
+    gsap.to("." + styles.dropdown_wrapper, {
+      height: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  };
+
+  const [nav, setNav] = useState(false);
+  const openNav = () => {
+    setNav(true);
+    openDropdown();
+  };
+
+  const closeNav = () => {
+    setNav(false);
+    closeDropdown();
+  };
+
+  const [doctors, setDoctors] = useState([]);
+  const [searchMessage, setSearchMessage] = useState("");
+
+  const handleInput = (e: any) => {
+    const query = e.target.value;
+    if (Boolean(query)) {
+      fetcher(
+        `/api/doctors?populate=*&filters[firstName][$containsi]=${query}&[lastName][$containsi]=${query}&[profession][$containsi]=${query}&pagination[pageSize]=3&pagination[page]=1`
+      )
+        .then((data) => {
+          const doctors = data.data;
+          if (doctors.length < 1) {
+            setSearchMessage("No doctor found");
+            setDoctors([]);
+          } else {
+            setSearchMessage("");
+            setDoctors(doctors);
+          }
+        })
+        .catch((e) => setSearchMessage("Doctor not found"));
+    } else {
+      setDoctors([]);
+    }
+  };
 
   return (
-    <>
-      <TopNav />
-      <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
-          <div
-            data-aos="fade-up"
-            className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
-          >
-            <div className="w-full md:w-[45%] md:pr-[30px]">
-              <h1 className={styles.header}>
-                Doctors and health professionals
-              </h1>
-            </div>
-            <div className="w-full md:w-1/2">
-              <p>
-                Lily health, established in 2021 , was created with the aim to
-                provide products, services, and resources  that ensure women
-                experience maximum health and wellness stability especially
-                concerning fertility.
-              </p>
-            </div>
+    <div className={styles.dropdown_wrapper + " " + props.className}>
+      <div className={"container-padding " + styles.dropdown}>
+        <input
+          onChange={handleInput}
+          className={styles.search_input}
+          name="query"
+          placeholder="Search"
+        />
+        {searchMessage && (
+          <div className="text-center pt-5 text-gray-600 text-lg">
+            {searchMessage}
           </div>
-        </div>
-        <div className={"my-5 container-padding " + styles.collage_container}>
+        )}
+        {doctors.length > 0 && (
           <div className={styles.collage_wrapper}>
-            {data?.data?.map(
+            {doctors.map(
               (
                 doctor: {
                   id: string;
@@ -103,9 +131,8 @@ export default function Doctors() {
               }
             )}
           </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+        )}
+      </div>
+    </div>
   );
 }

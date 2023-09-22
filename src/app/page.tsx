@@ -12,8 +12,18 @@ import Footer from "./_components/Footer/Footer";
 import TopNav from "./_components/TopNav/TopNav";
 
 import { fetcher, imageLoader } from "./_lib/strapi-rest";
+import Search from "./_components/Search";
 
 export default function Home(props: any) {
+  const [dropdown, setDropdown] = useState(false);
+  const openDropdown = () => {
+    setDropdown(true);
+    gsap.to(".search-dropdown", {
+      height: "100vh",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  };
   const [doctors, setDoctors] = useState([]);
   const { data, error } = useSWR(
     "/api/doctors?populate=*&pagination[pageSize]=5&pagination[page]=1",
@@ -53,7 +63,8 @@ export default function Home(props: any) {
   };
 
   const scrollDoctorsRight = () => {
-    if (doctorsSlide >= 0 && doctorsSlide < 4) {
+    const max = window.innerWidth > 767.9 ? 3 : 4;
+    if (doctorsSlide >= 0 && doctorsSlide < max) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -69,7 +80,7 @@ export default function Home(props: any) {
       }
     }
 
-    if (doctorsSlide === 4) {
+    if (doctorsSlide === max) {
       const scrollableContent = document.querySelector(
         ".slide-wrapper.doctors"
       ) as HTMLElement;
@@ -84,11 +95,15 @@ export default function Home(props: any) {
 
   return (
     <>
-      <TopNav />
+      <TopNav searchDropdown={dropdown} setSearchDropdown={setDropdown} />
+      <Search className="search-dropdown" />
       <main>
         <div className="container-padding">
           <div className="bg-lighter py-8 px-5 my-4 rounded-lg flex flex-col items-center justify-center md:h-screen">
-            <div className="hidden bg-light py-3 px-5 md:flex w-[720px] justify-between items-center rounded-[50px]">
+            <div
+              onClick={openDropdown}
+              className="hidden bg-light py-3 px-5 md:flex w-[720px] justify-between items-center rounded-[50px]"
+            >
               <div className="flex">
                 <Image
                   alt="3 doctors"
@@ -110,16 +125,16 @@ export default function Home(props: any) {
                   <path
                     d="M11.5 21.5C16.7467 21.5 21 17.2467 21 12C21 6.75329 16.7467 2.5 11.5 2.5C6.25329 2.5 2 6.75329 2 12C2 17.2467 6.25329 21.5 11.5 21.5Z"
                     stroke="#FF086F"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M22 22.5L20 20.5"
                     stroke="#FF086F"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -140,7 +155,7 @@ export default function Home(props: any) {
                   Login
                 </button>
               </Link>
-              <Link href="book">
+              <Link href="doctors">
                 <button className="button button-outline w-full  inverse-size-button md:ms-3">
                   Book a Doctor
                 </button>
@@ -263,9 +278,9 @@ export default function Home(props: any) {
           <div className="bg-[#ffffff26] md:bg-[#fff] py-8 rounded-lg md:rounded-none">
             <div
               data-aos="fade-up"
-              className="flex flex-col md:flex-row md:justify-between"
+              className="flex flex-col lg:flex-row md:justify-between"
             >
-              <div className="container-padding flex flex-col w-full md:w-[45%] md:pr-[50px] md:justify-center">
+              <div className="container-padding flex flex-col w-full lg:w-[45%] lg:pr-[50px] lg:justify-center">
                 <h3 className="h3">
                   Glance through the top professionals on our platform.
                 </h3>
@@ -273,7 +288,7 @@ export default function Home(props: any) {
                   Get comprehensive in-person and virtual care to support your
                   physical, mental and reproductive health.
                 </p>
-                <div className="hidden md:flex my-[24px] md:mt-[36px] gap-3">
+                <div className="hidden lg:flex my-[24px] lg:mt-[36px] gap-3">
                   <svg
                     onClick={scrollDoctorsLeft}
                     className="arrow-button"
@@ -332,7 +347,7 @@ export default function Home(props: any) {
                   </svg>
                 </div>
               </div>
-              <div className="w-full md:w-1/2">
+              <div className="w-full lg:w-[768px]">
                 <div className="my-5 slide-container doctors sm-container-padding hide-scrollbar">
                   <div className="slide-wrapper five-slides doctors ">
                     {doctors?.map(
@@ -351,7 +366,7 @@ export default function Home(props: any) {
                         return (
                           <div
                             key={index}
-                            className="slide doctors doctor-card md:min-w-[408px]"
+                            className="slide doctors doctor-card md:min-w-[376px]"
                           >
                             <Image
                               loader={imageLoader}
@@ -386,7 +401,7 @@ export default function Home(props: any) {
                   </div>
                 </div>
               </div>
-              <div className="container-padding my-[24px] md:mt-[36px] flex gap-3 md:hidden">
+              <div className="container-padding my-[24px] lg:mt-[36px] flex gap-3 lg:hidden">
                 <svg
                   onClick={scrollDoctorsLeft}
                   className="arrow-button"

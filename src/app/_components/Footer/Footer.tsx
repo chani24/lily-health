@@ -22,7 +22,7 @@ export default function Footer() {
                   Login
                 </button>
               </Link>
-              <Link href="book">
+              <Link href="doctors">
                 <button className="button button-light-outline w-full  inverse-size-button md:ms-3">
                   Book a Doctor
                 </button>

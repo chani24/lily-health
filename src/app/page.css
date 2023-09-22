@@ -35,7 +35,7 @@ width: 500%;
 	}
 
 .slide-wrapper.doctors {
-width: 3000%;
+width: 500%;
 }
 
 .doctor-card{
@@ -63,6 +63,7 @@ width: 3000%;
 	font-size: 14px;
 letter-spacing: -0.56px;
 width: fit-content;
+margin-bottom: 8px;
 }
 
 .doctor-card_footer .name{

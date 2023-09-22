@@ -170,7 +170,7 @@ export default function Doctors(props: any) {
                               />
                             </svg>
                           </span>
-                          <span className={styles.p}>
+                          <span className={styles.status}>
                             {formatDate(review?.attributes?.createdAt)}
                           </span>
                         </div>
