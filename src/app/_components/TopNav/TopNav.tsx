@@ -13,6 +13,7 @@ export default function TopNav(props: {
 }) {
   const [dropdown, setDropdown] = useState(false);
   const openDropdown = () => {
+    closeNav(0.5);
     setDropdown(true);
     gsap.to(".search-dropdown", {
       height: "100vh",
@@ -22,25 +23,36 @@ export default function TopNav(props: {
   };
 
   // Function to close the dropdown
-  const closeDropdown = () => {
+  const closeDropdown = (delay: number = 0.5) => {
     setDropdown(false);
-    props.setSearchDropdown(false);
+    if (props.setSearchDropdown) props.setSearchDropdown(false);
     gsap.to(".search-dropdown", {
       height: 0,
       duration: 0.5,
+      delay,
       ease: "power2.inOut",
     });
   };
 
   const [nav, setNav] = useState(false);
   const openNav = () => {
+    closeDropdown(0.5);
     setNav(true);
-    openDropdown();
+    gsap.to("." + styles.dropdown_wrapper, {
+      height: "100vh",
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
   };
 
-  const closeNav = () => {
+  const closeNav = (delay: number = 0.5) => {
     setNav(false);
-    closeDropdown();
+    gsap.to("." + styles.dropdown_wrapper, {
+      height: 0,
+      duration: 0.5,
+      delay,
+      ease: "power2.inOut",
+    });
   };
 
   return (
@@ -49,7 +61,7 @@ export default function TopNav(props: {
         <div className="flex items-center">
           {nav ? (
             <svg
-              onClick={closeNav}
+              onClick={() => closeNav()}
               width="24"
               height="23"
               viewBox="0 0 24 23"
@@ -110,7 +122,7 @@ export default function TopNav(props: {
         </div>
         <div className="flex items-center">
           {props.searchDropdown || dropdown ? (
-            <div onClick={closeDropdown} className={styles.search_bar}>
+            <div onClick={() => closeDropdown()} className={styles.search_bar}>
               <svg
                 width="21"
                 height="20"

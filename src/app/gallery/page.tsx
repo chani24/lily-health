@@ -13,11 +13,11 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 export default function Gallery() {
-  useEffect(() => {
+  /* useEffect(() => {
     AOS.init({
       duration: 2000,
     });
-  }, []);
+  }, []);*/
   return (
     <>
       <TopNav />
@@ -55,10 +55,7 @@ export default function Gallery() {
               </p>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="my-5 slide-container container-padding"
-          >
+          <div className="my-5 slide-container container-padding">
             <div className="slide-wrapper six-slides horizontal-scrolling-items">
               <div className="slide">
                 <Image alt="infant" src="/images/infant.png" fill />{" "}
@@ -80,10 +77,7 @@ export default function Gallery() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="my-5 slide-container container-padding"
-          >
+          <div className="my-5 slide-container container-padding">
             <div className="slide-wrapper six-slides horizontal-scrolling-items reverse">
               <div className="slide">
                 <Image alt="infant" src="/images/infant-4.png" fill />{" "}
@@ -121,10 +115,7 @@ export default function Gallery() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="my-5 slide-container container-padding"
-          >
+          <div className="my-5 slide-container container-padding">
             <div className="slide-wrapper six-slides horizontal-scrolling-items">
               <div className="slide">
                 <Image
@@ -170,10 +161,7 @@ export default function Gallery() {
               </div>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="my-5 slide-container container-padding"
-          >
+          <div className="my-5 slide-container container-padding">
             <div className="slide-wrapper six-slides horizontal-scrolling-items reverse">
               <div className="slide">
                 <Image

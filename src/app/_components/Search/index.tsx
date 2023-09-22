@@ -26,17 +26,6 @@ export default function Search(props: { className: string }) {
     });
   };
 
-  const [nav, setNav] = useState(false);
-  const openNav = () => {
-    setNav(true);
-    openDropdown();
-  };
-
-  const closeNav = () => {
-    setNav(false);
-    closeDropdown();
-  };
-
   const [doctors, setDoctors] = useState([]);
   const [searchMessage, setSearchMessage] = useState("");
 

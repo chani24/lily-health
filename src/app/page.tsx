@@ -163,10 +163,7 @@ export default function Home(props: any) {
             </div>
           </div>
         </div>
-        <div
-          data-aos="fade-up"
-          className="mt-3 mb-5 slide-container container-padding"
-        >
+        <div className="mt-3 mb-5 slide-container container-padding">
           <div className="slide-wrapper six-slides horizontal-scrolling-items">
             <div className="slide">
               <Image alt="infant" src="/images/infant.png" fill />{" "}
@@ -223,10 +220,7 @@ export default function Home(props: any) {
                 </Link>
               </div>
             </div>
-            <div
-              data-aos="fade-up"
-              className="my-5 slide-container container-padding"
-            >
+            <div className="my-5 slide-container container-padding">
               <div className="slide-wrapper six-slides horizontal-scrolling-items">
                 <div className="slide">
                   <Image
@@ -543,10 +537,7 @@ export default function Home(props: any) {
                 </p>
               </div>
             </div>
-            <div
-              data-aos="fade-up"
-              className="my-5 slide-container container-padding"
-            >
+            <div className="my-5 slide-container container-padding">
               <div className="slide-wrapper ten-slides horizontal-scrolling-items">
                 <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-4.png" fill />{" "}
