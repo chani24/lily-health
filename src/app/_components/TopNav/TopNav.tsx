@@ -3,15 +3,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./topnav.module.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import Search from "../Search";
+import { UserContext } from "@/app/_lib/context/user";
 
 export default function TopNav(props: {
   searchDropdown?: boolean;
   setSearchDropdown?: any;
 }) {
   const [dropdown, setDropdown] = useState(false);
+  const { doRegister, user, checkLogin } = useContext(UserContext);
+  useEffect(() => {
+    isUserLoggedIn();
+  }, []);
+
+  const isUserLoggedIn = async () => {
+    const res = await checkLogin();
+    if (res.status === 200) {
+    }
+  };
+
   const openDropdown = () => {
     closeNav(0.5);
     setDropdown(true);
@@ -121,6 +133,7 @@ export default function TopNav(props: {
           </Link>
         </div>
         <div className="flex items-center">
+          {user && <div className="text-white me-4">Hi, {user}</div>}
           {props.searchDropdown || dropdown ? (
             <div onClick={() => closeDropdown()} className={styles.search_bar}>
               <svg
@@ -171,11 +184,13 @@ export default function TopNav(props: {
             </div>
           )}
 
-          <Link href="/login">
-            <button className="button button-light ms-5 hidden md:block">
-              Login
-            </button>
-          </Link>
+          {!user && (
+            <Link href="/login">
+              <button className="button button-light ms-5 hidden md:block">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
       <Search className="search-dropdown" />

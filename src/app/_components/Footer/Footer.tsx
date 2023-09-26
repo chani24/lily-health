@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
           <div className="col-span-12 md:col-span-3 flex justify-start md:justify-end">
             <div className="flex gap-3">
-              <a>
+              {/* <a>
                 <svg
                   width="32"
                   height="32"
@@ -124,8 +124,8 @@ export default function Footer() {
                     </clipPath>
                   </defs>
                 </svg>
-              </a>
-              <a>
+  </a>*/}
+              <a href="https://www.instagram.com/lilyhealth_/" target="_blank">
                 {" "}
                 <svg
                   width="32"

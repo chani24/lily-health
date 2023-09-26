@@ -99,7 +99,7 @@ export default function Home(props: any) {
       <Search className="search-dropdown" />
       <main>
         <div className="container-padding">
-          <div className="bg-lighter py-8 px-5 my-4 rounded-lg flex flex-col items-center justify-center md:h-screen">
+          <div className="py-8 px-5 my-4 rounded-lg flex flex-col items-center justify-center md:h-screen">
             <div
               onClick={openDropdown}
               className="hidden bg-light py-3 px-5 md:flex w-[720px] justify-between items-center rounded-[50px]"
@@ -271,7 +271,6 @@ export default function Home(props: any) {
         <div className="sm-container-padding pt-5 md:pt-0">
           <div className="bg-[#ffffff26] md:bg-[#fff] py-8 rounded-lg md:rounded-none">
             <div
-              data-aos="fade-up"
               className="flex flex-col lg:flex-row md:justify-between"
             >
               <div className="container-padding flex flex-col w-full lg:w-[45%] lg:pr-[50px] lg:justify-center">
