@@ -308,6 +308,37 @@ export default function Doctors(props: any) {
                       In-Person
                     </div>
                   </div>
+                  <div className="pt-2">
+                    <span className={styles.p}>Reason for Consultation</span>
+                    <div className="relative">
+                      <select className={styles.select}>
+                        <option>Medical Consultancy</option>
+                        <option>Medical Checkup</option>
+                        <option>Medical Advice</option>
+                      </select>
+                      <svg
+                        className={styles.select_icon}
+                        width="20"
+                        height="21"
+                        viewBox="0 0 20 21"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 8L10 13L15 8"
+                          stroke="#404D78"
+                          strokeWidth="1.66667"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <span className={styles.p}>Additional Comments </span>
+                    <textarea className={styles.textarea} cols={20}></textarea>
+                  </div>
                 </div>
                 <button
                   className={
