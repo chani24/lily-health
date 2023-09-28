@@ -46,16 +46,48 @@ const UserProvider = ({ children }) => {
     }
   }
 
+  const doLogout = async () => {
+    const resp = await linstance.post("/api/auth/logout", {
+      method: "POST",
+    });
+    if (resp.data.message == "success") {
+      setUser("");
+      setEmail("");
+      setId("");
+    }
+  };
+
+  async function doRemind(values) {
+    try {
+      const resp = await linstance.post("/api/reminder", values);
+      return ["OK", resp.data.message];
+    } catch (error) {
+      return ["alert", error.response.data.message];
+    }
+  }
+
+  async function doReset(values) {
+    try {
+      const resp = await linstance.post("/api/reset", values);
+      return ["OK", resp.data.message];
+    } catch (error) {
+      return ["alert", error.response.data.message];
+    }
+  }
+
   const useract = {
-    user: user,
-    setUser: setUser,
-    email: email,
-    setEmail: setEmail,
-    id: id,
-    setId: setId,
-    checkLogin: checkLogin,
-    doRegister: doRegister,
-    doLogin: doLogin,
+    user,
+    setUser,
+    email,
+    setEmail,
+    id,
+    setId,
+    checkLogin,
+    doRegister,
+    doLogin,
+    doLogout,
+    doRemind,
+    doReset,
   };
 
   return (

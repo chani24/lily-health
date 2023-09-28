@@ -133,7 +133,6 @@ export default function TopNav(props: {
           </Link>
         </div>
         <div className="flex items-center">
-          {user && <div className="text-white me-4">Hi, {user}</div>}
           {props.searchDropdown || dropdown ? (
             <div onClick={() => closeDropdown()} className={styles.search_bar}>
               <svg
@@ -190,6 +189,11 @@ export default function TopNav(props: {
                 Login
               </button>
             </Link>
+          )}
+          {user && (
+            <button className="button button-light ms-5 hidden md:block">
+              {user}
+            </button>
           )}
         </div>
       </div>

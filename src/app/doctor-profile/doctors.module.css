@@ -12,7 +12,7 @@
 .photo_card .lower{
   height: 50px;
   width: 100%;
-  padding: 7px 16px 16px 124px;
+  padding: 0px 16px 16px 124px;
 }
 
 .p{
@@ -157,7 +157,7 @@ margin-right: 16px;
       
       .photo_card .lower{
         height: 100px;
-        padding: 28px 16px 16px 364px;
+        padding: 24px 16px 16px 364px;
       }
       
       .photo_card .image{

@@ -1,0 +1,55 @@
+.collage_wrapper{
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  padding-bottom: 80px;
+}
+
+.collage_block{
+  display: flex;
+  flex-direction: column;
+}
+.collage_image{
+  width: 100%;
+	height: 400px;
+	position: relative;
+  background-color: #FDEFF0;
+  border-radius: 8px;
+}
+
+.collage_image img{
+  object-fit: contain;
+}
+
+.name{
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+  padding-top: 8px;
+}
+.status{
+  color: #111;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+  .header{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+  }
+
+
+@media screen and (min-width: 767px){
+    .header{
+        font-size: 60px;
+      }
+
+      .collage_wrapper{
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        row-gap: 40px;
+      }
+}

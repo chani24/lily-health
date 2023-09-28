@@ -40,7 +40,7 @@ export default function Login() {
     } else {
       toast.success("Signed in");
       setUser(ret.message.username);
-      setTimeout(() => router.push("/doctors"), 3000);
+      setTimeout(() => router.push("/profile"), 3000);
       reset();
     }
     setIsSubmitting(false);
@@ -57,7 +57,7 @@ export default function Login() {
   };
 
   if (user) {
-    router.push("/doctors");
+    router.push("/profile");
   }
 
   return (
@@ -115,7 +115,7 @@ export default function Login() {
                   disabled={isSubmitting}
                   className="button button-primary w-full inverse-size-button"
                 >
-                  {isSubmitting && "Loading"}
+                  {isSubmitting && "Loading..."}
                   {!isSubmitting && "Sign in"}
                 </button>
               </div>

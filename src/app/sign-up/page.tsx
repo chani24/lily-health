@@ -23,7 +23,6 @@ export default function SignUp() {
   const password = { current: "" };
   password.current = watch("password", "");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [alert, setAlert] = useState(["", ""]);
 
   const onSubmit = async (values: any) => {
     setIsSubmitting(true);
@@ -134,7 +133,7 @@ export default function SignUp() {
                   disabled={isSubmitting}
                   className="button button-primary w-full inverse-size-button"
                 >
-                  {isSubmitting && "Loading"}
+                  {isSubmitting && "Loading..."}
                   {!isSubmitting && "Sign up"}
                 </button>
               </div>

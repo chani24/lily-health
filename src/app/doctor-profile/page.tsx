@@ -91,7 +91,7 @@ export default function Doctors(props: any) {
             <div className={styles.upper}></div>
             <div className={"container-padding " + styles.lower}>
               <div>
-                <span className={styles.name}>
+                <span className={styles.name + " mt-[-2px]"}>
                   {data?.data?.attributes?.firstName +
                     " " +
                     data?.data?.attributes?.lastName}
