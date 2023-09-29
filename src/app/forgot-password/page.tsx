@@ -2,7 +2,6 @@
 
 import styles from "./page.module.css";
 
-import type { Metadata } from "next";
 import TopNav from "../_components/TopNav/TopNav";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,10 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserContext } from "../_lib/context/user";
-
-export const metadata: Metadata = {
-  title: "Lily Health - Reset password",
-};
 
 export default function Remind() {
   const router = useRouter();
