@@ -15,6 +15,7 @@ export const UserContext = createContext({
       user: "";
       email: "";
       id: "";
+      status: 0;
     }
   },
   doRegister: (values) => ["", ""],
