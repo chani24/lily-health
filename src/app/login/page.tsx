@@ -4,16 +4,11 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../_lib/context/user";
 import styles from "./login.module.css";
 
-import type { Metadata } from "next";
 import TopNav from "../_components/TopNav/TopNav";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-export const metadata: Metadata = {
-  title: "Lily Health - Sign In",
-};
 
 export default function Login() {
   const router = useRouter();
