@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     })
       .then((response: any) => {
         console.log(response)
-        return NextResponse.json({ message: `Your password has been changed, you will be redirect to login` }, { status: 200 });
+        return NextResponse.json({ message: `Your password has been reset, you will be redirected to login` }, { status: 200 });
       })
       .catch((error: { response: { data: { error: { message: any; }; }; }; }) => {
         console.log(error);

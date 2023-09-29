@@ -108,7 +108,7 @@ export default function ResetPassword() {
                 className="button button-primary w-full inverse-size-button"
               >
                 {isSubmitting && "Loading..."}
-                {!isSubmitting && "Set password"}
+                {!isSubmitting && "Reset"}
               </button>
             </form>
           </div>
