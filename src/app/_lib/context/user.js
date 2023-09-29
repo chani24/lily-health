@@ -10,12 +10,25 @@ export const UserContext = createContext({
   setEmail: () => {},
   id: null,
   setId: () => {},
-  checkLogin: () => {},
+  checkLogin: () => {
+    data: {
+      user: "";
+      email: "";
+      id: "";
+    }
+  },
   doRegister: (values) => ["", ""],
-  doLogin: (values) => ["", ""],
-  doLogout: () => {},
-  doRemind: () => {},
-  doReset: () => {},
+  doLogin: (values) => {
+    data: {
+    }
+  },
+  doLogout: () => {
+    data: {
+      message: "";
+    }
+  },
+  doRemind: () => ["", ""],
+  doReset: () => ["", ""],
 });
 
 const UserProvider = ({ children }) => {
