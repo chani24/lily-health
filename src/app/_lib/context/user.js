@@ -4,10 +4,18 @@ import { linstance } from "../api";
 
 import { useState, createContext, useEffect } from "react";
 export const UserContext = createContext({
-  dummy: null,
-  setDummy: null,
-  dummyfunction: null,
+  user: null,
+  setUser: () => {},
+  email: null,
+  setEmail: () => {},
+  id: null,
+  setId: () => {},
+  checkLogin: () => {},
   doRegister: (values) => ["", ""],
+  doLogin: (values) => ["", ""],
+  doLogout: () => {},
+  doRemind: () => {},
+  doReset: () => {},
 });
 
 const UserProvider = ({ children }) => {
