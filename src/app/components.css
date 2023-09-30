@@ -1,76 +1,71 @@
 .button {
-    padding: 16px 32px;
-    border: 1px solid rgba(255, 8, 111, 1);
-    color: rgba(255, 8, 111, 1);
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 32px;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 20px;
-    font-weight: 600;
-    min-width: 136px;
+  padding: 16px 32px;
+  border: 1px solid rgba(255, 8, 111, 1);
+  color: rgba(255, 8, 111, 1);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 32px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 20px;
+  font-weight: 600;
+  min-width: 136px;
 }
-
 
 /* Light/White Button */
 .button-light {
-    background-color: #fff;
-    border: none;
+  background-color: #fff;
+  border: none;
 }
-
 
 /* Primary Button */
 .button-primary {
-    background-color: rgba(255, 8, 111, 1);
-    color: #fff;
-   
+  background-color: rgba(255, 8, 111, 1) !important;
+  color: #fff;
 }
 
-.button-primary:disabled{
-    background-color: rgba(255, 8, 111, 0.5);
-    border: none;
+.button-primary:disabled {
+  background-color: rgba(255, 8, 111, 0.5);
+  border: none;
 }
 
-.button-small{
-padding: 6px 20px;
-font-weight: 500;
- min-width: 50px;
+.button-small {
+  padding: 6px 20px;
+  font-weight: 500;
+  min-width: 50px;
 }
 
-.button-light-outline{
-border: 1px solid #fff;
-color: #fff;
+.button-light-outline {
+  border: 1px solid #fff;
+  color: #fff;
 }
-
 
 /* Outline Button */
 .button-outline {
-    background-color: transparent;
+  background-color: transparent;
 }
 
-
-.form{
-    margin: 24px 0;
+.form {
+  margin: 24px 0;
 }
-.form input{
-    border-radius: 12px;
-    border: 0.5px solid rgba(255, 8, 111, 0.50);
-    display: block;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    padding: 12px 10px;
-    height: 44px;
-    width: 100%;
-    background-color: transparent;
-    color: #001433;
+.form input {
+  border-radius: 12px;
+  border: 0.5px solid rgba(255, 8, 111, 0.5);
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 12px 10px;
+  height: 44px;
+  width: 100%;
+  background-color: transparent;
+  color: #001433;
 }
-@media (min-width: 768px) { 
-    .inverse-size-button{
-padding: 10px 20px; }
+@media (min-width: 768px) {
+  .inverse-size-button {
+    padding: 10px 20px;
+  }
 
-.button-small{
+  .button-small {
     padding: 8px 20px;
+  }
 }
-
- }

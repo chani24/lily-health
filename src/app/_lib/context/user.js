@@ -80,7 +80,11 @@ const UserProvider = ({ children }) => {
       };
       return res;
     } catch (error) {
-      return ["alert", error.response.data.message];
+      const res = {
+        alert: ["alert", error.response.data.message],
+        message: null,
+      };
+      return res;
     }
   }
 
