@@ -11,22 +11,30 @@ export const UserContext = createContext({
   id: null,
   setId: () => {},
   checkLogin: () => {
-    data: {
-      user: "";
-      email: "";
-      id: "";
-      status: 0;
-    }
+    const res = {
+      data: {
+        user: "",
+        email: "",
+        id: "",
+        status: 0,
+      },
+    };
+
+    return res;
   },
   doRegister: (values) => ["", ""],
   doLogin: (values) => {
-    data: {
-    }
+    const res = { data: {} };
+
+    return res;
   },
   doLogout: () => {
-    data: {
-      message: "";
-    }
+    const res = {
+      data: {
+        message: "",
+      },
+    };
+    return res;
   },
   doRemind: () => ["", ""],
   doReset: () => ["", ""],
