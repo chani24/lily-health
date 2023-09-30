@@ -36,8 +36,8 @@ export const UserContext = createContext({
     };
     return res;
   },
-  doRemind: () => ["", ""],
-  doReset: () => ["", ""],
+  doRemind: (values) => ["", ""],
+  doReset: (values) => ["", ""],
 });
 
 const UserProvider = ({ children }) => {
