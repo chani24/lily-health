@@ -5,11 +5,11 @@ import { linstance } from "../api";
 import { useState, createContext, useEffect } from "react";
 export const UserContext = createContext({
   user: null,
-  setUser: () => {},
+  setUser: (user) => {},
   email: null,
-  setEmail: () => {},
+  setEmail: (email) => {},
   id: null,
-  setId: () => {},
+  setId: (id) => {},
   checkLogin: () => {
     const res = {
       data: {
@@ -24,8 +24,12 @@ export const UserContext = createContext({
   },
   doRegister: (values) => ["", ""],
   doLogin: (values) => {
-    const res = { data: {} };
-
+    const res = {
+      alert: ["", ""],
+      message: {
+        username: "",
+      },
+    };
     return res;
   },
   doLogout: () => {
@@ -70,7 +74,11 @@ const UserProvider = ({ children }) => {
   async function doLogin(values) {
     try {
       const resp = await linstance.post("/api/login", values);
-      return resp.data;
+      const res = {
+        alert: ["", ""],
+        message: resp.data.message,
+      };
+      return res;
     } catch (error) {
       return ["alert", error.response.data.message];
     }

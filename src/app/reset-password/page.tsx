@@ -43,18 +43,19 @@ export default function ResetPassword() {
   };
 
   useEffect(() => {
+    const isUserLoggedIn = async () => {
+      const res = await checkLogin();
+      if (res.status === 200) {
+      }
+    };
     isUserLoggedIn();
   }, []);
 
-  const isUserLoggedIn = async () => {
-    const res = await checkLogin();
-    if (res.status === 200) {
+  useEffect(() => {
+    if (user) {
+      router.push("/profile");
     }
-  };
-
-  if (user) {
-    router.push("/profile");
-  }
+  }, [user]);
 
   return (
     <>

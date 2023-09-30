@@ -30,8 +30,8 @@ export default function Login() {
 
     const ret = await doLogin(values);
 
-    if (ret[0] === "alert") {
-      toast.error(ret[1]);
+    if (ret.alert[0] === "alert") {
+      toast.error(ret.alert[1]);
     } else {
       toast.success("Signed in");
       setUser(ret.message.username);
@@ -42,18 +42,19 @@ export default function Login() {
   };
 
   useEffect(() => {
+    const isUserLoggedIn = async () => {
+      const res = await checkLogin();
+      if (res.status === 200) {
+      }
+    };
     isUserLoggedIn();
   }, []);
 
-  const isUserLoggedIn = async () => {
-    const res = await checkLogin();
-    if (res.status === 200) {
+  useEffect(() => {
+    if (user) {
+      router.push("/profile");
     }
-  };
-
-  if (user) {
-    router.push("/profile");
-  }
+  }, [user]);
 
   return (
     <>

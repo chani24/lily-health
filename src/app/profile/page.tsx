@@ -16,7 +16,7 @@ import "aos/dist/aos.css";
 
 import { fetcher, imageLoader } from "../_lib/strapi-rest";
 
-export default function Doctors() {
+export default function Profile() {
   const router = useRouter();
   const { user, checkLogin } = useContext(UserContext);
   useEffect(() => {
@@ -26,18 +26,19 @@ export default function Doctors() {
   }, []);
 
   useEffect(() => {
+    const isUserLoggedIn = async () => {
+      const res = await checkLogin();
+      if (res.status === 200) {
+      }
+    };
     isUserLoggedIn();
   }, []);
 
-  const isUserLoggedIn = async () => {
-    const res = await checkLogin();
-    if (res.status === 200) {
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
     }
-  };
-
-  if (!user) {
-    router.push("/login");
-  }
+  }, [user]);
 
   const { data, error } = useSWR("/api/doctors?populate=*", fetcher);
 

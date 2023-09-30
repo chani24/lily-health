@@ -15,14 +15,13 @@ export default function TopNav(props: {
   const [dropdown, setDropdown] = useState(false);
   const { doRegister, user, checkLogin } = useContext(UserContext);
   useEffect(() => {
+    const isUserLoggedIn = async () => {
+      const res = await checkLogin();
+      if (res.status === 200) {
+      }
+    };
     isUserLoggedIn();
   }, []);
-
-  const isUserLoggedIn = async () => {
-    const res = await checkLogin();
-    if (res.status === 200) {
-    }
-  };
 
   const openDropdown = () => {
     closeNav(0.5);
