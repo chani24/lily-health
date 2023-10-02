@@ -17,6 +17,7 @@ import formatDate from "../_lib/formatDate";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "react-modal";
 
 import { linstance } from "../_lib/api";
 import { useForm } from "react-hook-form";
@@ -41,7 +42,8 @@ function getDayOfWeekFromISODateString(inputDate: Date) {
 }
 
 export default function Doctors(props: any) {
-  const { createBooking, email } = useContext(UserContext);
+  const [mobileTab, setMobileTab] = useState(1);
+  const { createBooking, id } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -50,13 +52,31 @@ export default function Doctors(props: any) {
   } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const { data } = useSWR(
+    "/api/doctors/?populate=*&filters[uid][$eq]=" + props.searchParams.id,
+    fetcher
+  );
+
+  const { data: topDoctors } = useSWR(
+    "/api/doctors?populate=*&filters[uid][$ne]=" +
+      props.searchParams.id +
+      "&pagination[pageSize]=3&pagination[page]=1",
+    fetcher
+  );
+
+  const { data: reviews } = useSWR(
+    "/api/reviews?populate=*&filters[doctor][uid][$eq]=" +
+      props.searchParams.id +
+      "&pagination[pageSize]=3&pagination[page]=1",
+    fetcher
+  );
   const onSubmit = async (values: any) => {
     values.date = resources[activeTime[0]].date;
     values.time = resources[activeTime[0]].times[activeTime[1]];
     values.dateString = resources[activeTime[0]].dateString;
     values.inPerson = inPerson;
-    values.doctorId = props.searchParams.id;
-    values.userEmail = email;
+    values.doctor = data?.data[0].id;
+    values.user = id;
     setIsSubmitting(true);
 
     const ret = await createBooking(values);
@@ -66,6 +86,7 @@ export default function Doctors(props: any) {
     } else {
       toast.success(ret[1]);
       reset();
+      closeModal();
     }
     setIsSubmitting(false);
   };
@@ -100,24 +121,6 @@ export default function Doctors(props: any) {
       .catch((e) => {});
   }, []);
 
-  const { data } = useSWR(
-    "/api/doctors/?populate=*&filters[uid][$eq]=" + props.searchParams.id,
-    fetcher
-  );
-
-  const { data: topDoctors } = useSWR(
-    "/api/doctors?populate=*&filters[uid][$ne]=" +
-      props.searchParams.id +
-      "&pagination[pageSize]=3&pagination[page]=1",
-    fetcher
-  );
-
-  const { data: reviews } = useSWR(
-    "/api/reviews?populate=*&filters[doctor][uid][$eq]=" +
-      props.searchParams.id +
-      "&pagination[pageSize]=3&pagination[page]=1",
-    fetcher
-  );
   const [resources, setResources] = useState([
     {
       date: "",
@@ -144,6 +147,18 @@ export default function Doctors(props: any) {
   const chooseTime = (dayIndex: any, TimeIndex: any) => {
     setActiveTime([dayIndex, TimeIndex]);
   };
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {}
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -249,17 +264,24 @@ export default function Doctors(props: any) {
               )}
             </div>
             <div className="w-full md:w-1/3">
-              <div className="z-40 bg-[#FDEFF0] fixed bottom-0 left-0 w-full md:hidden container-padding py-4 flex justify-between items-center">
-                <div>
-                  <span className={styles.name + " mb-[-8px]"}>
-                    09 Sep 2023, 4:15pm
-                  </span>
-                  <p className={styles.p}>Next Available</p>
+              {!modalIsOpen && (
+                <div className="z-40 bg-[#FDEFF0] fixed bottom-0 left-0 w-full md:hidden container-padding py-4 flex justify-between items-center">
+                  <div>
+                    <span className={styles.name + " mb-[-8px]"}>
+                      {formatDate(resources[activeTime[0]].date)}{" "}
+                      {resources[activeTime[0]].times[activeTime[1]]}
+                    </span>
+                    <p className={styles.p}>Next Available</p>
+                  </div>
+                  <button
+                    onClick={openModal}
+                    className={"button button-primary " + styles.btn}
+                  >
+                    Check Availability
+                  </button>
                 </div>
-                <button className={"button button-primary " + styles.btn}>
-                  Check Availability
-                </button>
-              </div>
+              )}
+
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="hidden md:block"
@@ -496,6 +518,236 @@ export default function Doctors(props: any) {
       </main>
       <Footer />
       <ToastContainer />
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={{
+          content: {
+            top: "100px",
+            left: "16px",
+            paddingLeft: "8px",
+            paddingRight: "8px",
+            right: "16px",
+            borderRadius: "8px",
+            zIndex: "300",
+          },
+        }}
+        contentLabel="Modal"
+      >
+        <form>
+          <p className={styles.header + " mb-5"}>Available Sessions</p>
+          <span className={"mt-[-8px] " + styles.p}>
+            Schedule one-on-one sessions based on your preference. All times in
+            GMT.
+          </span>
+          {mobileTab === 1 ? <></> : <></>}
+          <div className="my-5 grid grid-cols-1 gap-3">
+            {mobileTab === 1 ? (
+              <>
+                {resources.map((resource, index) => {
+                  return (
+                    <div key={index} className={styles.outer_box + " flex-col"}>
+                      <div
+                        className={
+                          "flex justify-between items-center " +
+                          styles.upper_div
+                        }
+                        onClick={() => toggleResource(index)}
+                      >
+                        <div>
+                          <h4>{resource.dateString}</h4>
+                        </div>
+
+                        <div className="flex items-center">
+                          <div className={styles.pill}>
+                            {resource.times.length}
+                            {" slot(s)"}
+                          </div>
+                          {resource.isOpen ? (
+                            <svg
+                              width="20"
+                              height="21"
+                              viewBox="0 0 20 21"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M15 13L10 8L5 13"
+                                stroke="#404D78"
+                                strokeWidth="1.66667"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              width="20"
+                              height="21"
+                              viewBox="0 0 20 21"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M5 8L10 13L15 8"
+                                stroke="#404D78"
+                                strokeWidth="1.66667"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+
+                      <div
+                        className={
+                          styles.resource +
+                          " grid grid-cols-3 gap-x-3 resource_" +
+                          index
+                        }
+                      >
+                        {resource.times.map((time, id) => {
+                          return (
+                            <div
+                              key={id}
+                              onClick={() => chooseTime(index, id)}
+                              className={
+                                activeTime[0] === index && activeTime[1] === id
+                                  ? "col-span-1 bg-lighter mt-3 " +
+                                    styles.inner_box
+                                  : "col-span-1 mt-3 " + styles.inner_box
+                              }
+                            >
+                              <span>{time}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                <div className={styles.outer_box}>
+                  <div
+                    onClick={() => setInPerson(false)}
+                    className={
+                      inPerson
+                        ? styles.inner_box + ""
+                        : styles.inner_box + " bg-lighter"
+                    }
+                  >
+                    Virtual
+                  </div>
+                  <div
+                    onClick={() => setInPerson(true)}
+                    className={
+                      inPerson
+                        ? styles.inner_box + " bg-lighter"
+                        : styles.inner_box + ""
+                    }
+                  >
+                    In-Person
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <span className={styles.p}>Reason for Consultation</span>
+                  <div className="relative">
+                    <select {...register("title")} className={styles.select}>
+                      <option value="Medical Consultancy">
+                        Medical Consultancy
+                      </option>
+                      <option value="Medical Checkup">Medical Checkup</option>
+                      <option value="Medical Advice">Medical Advice</option>
+                    </select>
+                    <svg
+                      className={styles.select_icon}
+                      width="20"
+                      height="21"
+                      viewBox="0 0 20 21"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 8L10 13L15 8"
+                        stroke="#404D78"
+                        strokeWidth="1.66667"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <span className={styles.p}>Additional Comments </span>
+                  <textarea
+                    {...register("description")}
+                    className={styles.textarea}
+                    cols={20}
+                  ></textarea>
+                </div>
+              </>
+            )}
+          </div>
+        </form>
+        {mobileTab === 1 ? (
+          <>
+            <button
+              type="button"
+              onClick={() => setMobileTab(2)}
+              className={
+                "button button-primary " + styles.btn + " " + styles.btn_2
+              }
+            >
+              Next
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={handleSubmit(onSubmit)}
+              className={
+                "button button-primary " + styles.btn + " " + styles.btn_2
+              }
+            >
+              {isSubmitting && "Loading..."}
+              {!isSubmitting &&
+                "Book Session for " +
+                  resources[activeTime[0]].times[activeTime[1]]}
+            </button>
+          </>
+        )}
+        {mobileTab === 1 ? (
+          <button
+            type="button"
+            onClick={closeModal}
+            className={
+              "button button-primary-outline mt-5 " +
+              styles.btn +
+              " " +
+              styles.btn_2
+            }
+          >
+            Close
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setMobileTab(1)}
+            className={
+              "button button-primary-outline mt-5 " +
+              styles.btn +
+              " " +
+              styles.btn_2
+            }
+          >
+            Back
+          </button>
+        )}
+      </Modal>
       <div className="pb-[115px] md:pb-0"></div>
     </>
   );

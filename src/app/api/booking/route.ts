@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import axios from '../../_lib/api';
 import { NextResponse } from "next/server";
 
@@ -11,23 +12,28 @@ export async function GET(request: Request) {
 export async function POST(req: Request) {
 try{
   const data = await req.json();
+  const cookieStore = cookies();
+  const token = cookieStore.get('token');
+  
 
-  return NextResponse.json({ message:  `Tested!` }, { status:200 });
-  return  axios.post('/api/auth/local/register', {...data, username: data.email}, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((response: any) => {
-      console.log(response)
-      return NextResponse.json({ message:  `Check your email (${data?.email}) and follow the instructions to confirm your account.` }, { status:200 });
-    })
+  return axios.post('/api/bookings', {data}, {
+    headers: {
+      Authorization: `Bearer ${token?.value}`,
+    },
+  })
+  .then((response) => {
+    return NextResponse.json({
+        message: `Booking with ID: ${response.data.data.id} created successfully!`
+      }, { status:200 });
+
+  })
     .catch((error: { response: { data: { error: { message: any; }; }; }; }) => {
       console.log(error);
       if (!error.response.data.error.message) {
           return NextResponse.json({ message: 'Internal server error' }, { status:500 });
       } else {
-        const messages = error.response.data.error.message;
+        const messages = 'Failed to create booking' || error.response.data.error.message;
+        console.log(error.response.data.error.message)
           return NextResponse.json({ message: messages }, { status:400 });
       }
     });
@@ -36,6 +42,4 @@ catch (e) {
   console.log(e)
     return NextResponse.json({ message: 'Internal server error' }, { status:500 });
   }
-
-
 }

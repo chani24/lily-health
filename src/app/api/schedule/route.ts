@@ -35,15 +35,19 @@ function generateHourlyBookings() {
       const bookingsForDay = [];
 
       // Generate bookings from startTime to endTime
-      for (let hour = startTime; hour <= endTime; hour++) {
-        const booking = `${hour}:00`
-        bookingsForDay.push(booking);
+      const currentHour = new Date().getHours();
+        for (let hour = startTime; hour <= endTime; hour++) {
+        if (currentDate > new Date() || (currentDate.getDate() === new Date().getDate() && hour >= currentHour)) {  const booking = `${hour}:00`
+          bookingsForDay.push(booking);
+        }
       }
-
-      bookings.push({
+      if (bookingsForDay.length > 0) {
+        bookings.push({
         date: currentDate, //.toISOString().split('T')[0],
         times: bookingsForDay,
       });
+      }
+      
     }
   }
 
