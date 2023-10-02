@@ -61,9 +61,6 @@ export async function GET(req: Request) {
     try {
         const cookieStore = cookies();
         const token = cookieStore.get('token');
-        if (!token) {
-            return NextResponse.json({ message: 'not authorized' }, { status:403 });
-        }
 
         const hourlyBookings = generateHourlyBookings();
       
