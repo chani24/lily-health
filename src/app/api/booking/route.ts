@@ -18,7 +18,7 @@ try{
 
   return axios.post('/api/bookings', {data}, {
     headers: {
-      Authorization: `Bearer ${token?.value}`,
+      Authorization: token?.value ? `Bearer ${token?.value}`: null,
     },
   })
   .then((response) => {
