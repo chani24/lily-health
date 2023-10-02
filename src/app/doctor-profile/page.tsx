@@ -4,7 +4,7 @@ import Image from "next/image";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import { Key, useEffect, useState } from "react";
+import { Key, useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import useSWR from "swr";
 import AOS from "aos";
@@ -15,54 +15,117 @@ import { fetcher, imageLoader } from "../_lib/strapi-rest";
 import Link from "next/link";
 import formatDate from "../_lib/formatDate";
 
-const availableTimes = [
-  {
-    date: "Saturday, 5th of July, 2023",
-    isOpen: false,
-    times: ["4:30 PM", "5:00 PM", "5:30 PM"],
-  },
-  {
-    date: "Sunday, 6th of July, 2023",
-    isOpen: false,
-    times: ["4:30 PM", "5:00 PM", "5:30 PM"],
-  },
-  {
-    date: "Monday, 7th of July, 2023",
-    isOpen: false,
-    times: ["4:30 PM", "5:00 PM", "5:30 PM"],
-  },
-  {
-    date: "Tuesday, 8th of July, 2023",
-    isOpen: false,
-    times: ["4:30 PM", "5:00 PM", "5:30 PM"],
-  },
-];
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { linstance } from "../_lib/api";
+import { useForm } from "react-hook-form";
+import { UserContext } from "../_lib/context/user";
+
+function getDayOfWeekFromISODateString(inputDate: Date) {
+  if (!inputDate) return "";
+  const date = new Date(inputDate);
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const dayOfWeekIndex = date.getDay();
+
+  return daysOfWeek[dayOfWeekIndex];
+}
+
 export default function Doctors(props: any) {
+  const { createBooking, email } = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (values: any) => {
+    values.date = resources[activeTime[0]].date;
+    values.time = resources[activeTime[0]].times[activeTime[1]];
+    values.dateString = resources[activeTime[0]].dateString;
+    values.inPerson = inPerson;
+    values.doctorId = props.searchParams.id;
+    values.userEmail = email;
+    setIsSubmitting(true);
+
+    const ret = await createBooking(values);
+
+    if (ret[0] === "alert") {
+      toast.error(ret[1]);
+    } else {
+      toast.success(ret[1]);
+      reset();
+    }
+    setIsSubmitting(false);
+  };
   useEffect(() => {
     AOS.init({
       duration: 1500,
     });
+    linstance
+      .get("/api/schedule")
+      .then((res) => {
+        const dates = res.data.data;
+
+        let parsedAvailableTimes: any[] = [];
+
+        dates.forEach((date: { times: []; date: any }) => {
+          const newDate = {
+            times: [""],
+            isOpen: false,
+            date: "",
+            dateString: "",
+          };
+          newDate.times = date.times;
+          newDate.dateString = `${getDayOfWeekFromISODateString(
+            date.date
+          )} ${formatDate(date.date)}`;
+          newDate.date = date.date;
+          parsedAvailableTimes.push(newDate);
+        });
+
+        setResources(parsedAvailableTimes);
+      })
+      .catch((e) => {});
   }, []);
 
   const { data } = useSWR(
-    "/api/doctors/" + props.searchParams.id + "?populate=*",
+    "/api/doctors/?populate=*&filters[uid][$eq]=" + props.searchParams.id,
     fetcher
   );
 
   const { data: topDoctors } = useSWR(
-    "/api/doctors?populate=*&filters[id][$ne]=" +
+    "/api/doctors?populate=*&filters[uid][$ne]=" +
       props.searchParams.id +
       "&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
 
   const { data: reviews } = useSWR(
-    "/api/reviews?populate=*&filters[doctor][id][$eq]=" +
+    "/api/reviews?populate=*&filters[doctor][uid][$eq]=" +
       props.searchParams.id +
       "&pagination[pageSize]=3&pagination[page]=1",
     fetcher
   );
-  const [resources, setResources] = useState(availableTimes);
+  const [resources, setResources] = useState([
+    {
+      date: "",
+      dateString: "",
+      isOpen: false,
+      times: ["0"],
+    },
+  ]);
   const [activeTime, setActiveTime] = useState([0, 0]);
   const [inPerson, setInPerson] = useState(true);
   const toggleResource = (index: number) => {
@@ -92,12 +155,12 @@ export default function Doctors(props: any) {
             <div className={"container-padding " + styles.lower}>
               <div>
                 <span className={styles.name + " mt-[-2px]"}>
-                  {data?.data?.attributes?.firstName +
+                  {data?.data[0].attributes?.firstName +
                     " " +
-                    data?.data?.attributes?.lastName}
+                    data?.data[0].attributes?.lastName}
                 </span>
                 <span className={styles.status}>
-                  {data?.data?.attributes?.profession}
+                  {data?.data[0].attributes?.profession}
                 </span>
               </div>
             </div>
@@ -106,7 +169,7 @@ export default function Doctors(props: any) {
               style={{
                 backgroundImage:
                   "url(" +
-                  data?.data?.attributes?.avatar?.data?.attributes?.url +
+                  data?.data[0].attributes?.avatar?.data?.attributes?.url +
                   ")",
               }}
             ></div>
@@ -115,7 +178,7 @@ export default function Doctors(props: any) {
             <div className="w-full md:w-2/3 md:pr-[80px] container-padding">
               <div>
                 <h1 className={styles.header}>Overview</h1>
-                <p className={styles.p}>{data?.data?.attributes?.bio}</p>
+                <p className={styles.p}>{data?.data[0].attributes?.bio}</p>
               </div>
               <div className="mt-[40px]">
                 <h2 className={styles.header}>Reviews</h2>
@@ -126,7 +189,7 @@ export default function Doctors(props: any) {
                     review: {
                       attributes: {
                         createdAt: string;
-                        users_permissions_user: {
+                        user: {
                           data: {
                             attributes: {
                               firstName: string;
@@ -145,12 +208,12 @@ export default function Doctors(props: any) {
                         <div className="flex items-end mt-3 mb-[-10px]">
                           <span className={styles.name_small}>
                             {
-                              review?.attributes?.users_permissions_user?.data
-                                ?.attributes?.firstName
+                              review?.attributes?.user?.data?.attributes
+                                ?.firstName
                             }{" "}
                             {
-                              review?.attributes?.users_permissions_user?.data
-                                ?.attributes?.lastName
+                              review?.attributes?.user?.data?.attributes
+                                ?.lastName
                             }
                           </span>{" "}
                           <span className={styles.p + " mx-3 mb-3"}>
@@ -197,10 +260,14 @@ export default function Doctors(props: any) {
                   Check Availability
                 </button>
               </div>
-              <div className="hidden md:block">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="hidden md:block"
+              >
                 <p className={styles.header + " mb-5"}>Available Sessions</p>
                 <span className={"mt-[-8px] " + styles.p}>
-                  Schedule one-on-one sessions based on your preference.
+                  Schedule one-on-one sessions based on your preference. All
+                  times in GMT.
                 </span>
                 <div className="my-5 grid grid-cols-1 gap-3">
                   {resources.map((resource, index) => {
@@ -217,7 +284,7 @@ export default function Doctors(props: any) {
                           onClick={() => toggleResource(index)}
                         >
                           <div>
-                            <h4>{resource.date}</h4>
+                            <h4>{resource.dateString}</h4>
                           </div>
 
                           <div className="flex items-center">
@@ -263,7 +330,9 @@ export default function Doctors(props: any) {
 
                         <div
                           className={
-                            styles.resource + " flex gap-3 resource_" + index
+                            styles.resource +
+                            " grid grid-cols-3 gap-x-3 resource_" +
+                            index
                           }
                         >
                           {resource.times.map((time, id) => {
@@ -274,8 +343,9 @@ export default function Doctors(props: any) {
                                 className={
                                   activeTime[0] === index &&
                                   activeTime[1] === id
-                                    ? "bg-lighter mt-3 " + styles.inner_box
-                                    : "mt-3 " + styles.inner_box
+                                    ? "col-span-1 bg-lighter mt-3 " +
+                                      styles.inner_box
+                                    : "col-span-1 mt-3 " + styles.inner_box
                                 }
                               >
                                 <span>{time}</span>
@@ -311,10 +381,12 @@ export default function Doctors(props: any) {
                   <div className="pt-2">
                     <span className={styles.p}>Reason for Consultation</span>
                     <div className="relative">
-                      <select className={styles.select}>
-                        <option>Medical Consultancy</option>
-                        <option>Medical Checkup</option>
-                        <option>Medical Advice</option>
+                      <select {...register("title")} className={styles.select}>
+                        <option value="Medical Consultancy">
+                          Medical Consultancy
+                        </option>
+                        <option value="Medical Checkup">Medical Checkup</option>
+                        <option value="Medical Advice">Medical Advice</option>
                       </select>
                       <svg
                         className={styles.select_icon}
@@ -337,7 +409,11 @@ export default function Doctors(props: any) {
 
                   <div className="pt-2">
                     <span className={styles.p}>Additional Comments </span>
-                    <textarea className={styles.textarea} cols={20}></textarea>
+                    <textarea
+                      {...register("description")}
+                      className={styles.textarea}
+                      cols={20}
+                    ></textarea>
                   </div>
                 </div>
                 <button
@@ -345,10 +421,12 @@ export default function Doctors(props: any) {
                     "button button-primary " + styles.btn + " " + styles.btn_2
                   }
                 >
-                  Book Session for{" "}
-                  {resources[activeTime[0]].times[activeTime[1]]}
+                  {isSubmitting && "Loading..."}
+                  {!isSubmitting &&
+                    "Book Session for " +
+                      resources[activeTime[0]].times[activeTime[1]]}
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -362,7 +440,6 @@ export default function Doctors(props: any) {
             {topDoctors?.data?.map(
               (
                 doctor: {
-                  id: string;
                   attributes: {
                     profession: string;
                     avatar: {
@@ -371,12 +448,16 @@ export default function Doctors(props: any) {
                     firstName: string;
                     lastName: string;
                     availability: any;
+                    uid: string;
                   };
                 },
                 index: Key | null | undefined
               ) => {
                 return (
-                  <Link key={index} href={"/doctor-profile?id=" + doctor.id}>
+                  <Link
+                    key={index}
+                    href={"/doctor-profile?id=" + doctor.attributes.uid}
+                  >
                     <div className={styles.collage_block + " doctor-card"}>
                       <div className={styles.collage_image}>
                         <Image
@@ -414,6 +495,7 @@ export default function Doctors(props: any) {
         </div>
       </main>
       <Footer />
+      <ToastContainer />
       <div className="pb-[115px] md:pb-0"></div>
     </>
   );

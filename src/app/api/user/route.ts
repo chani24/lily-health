@@ -26,7 +26,15 @@ export async function GET(req: Request) {
    
           })
           .catch((error) => {
-            return NextResponse.json({ message: 'Internal server error' }, { status:500 });});
+            if (!error.response.data.error.message) {
+                return NextResponse.json({ message: 'Internal server error' }, { status:500 });
+            } else {
+              const messages = error.response.data.error.message;
+              console.log(error.response.data.error.details)
+                return NextResponse.json({ message: messages }, { status:403 });
+    
+            }
+          });
     }
     catch (e) {
         console.log(e)

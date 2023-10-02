@@ -53,19 +53,22 @@ export default function Doctors() {
             {data?.data?.map(
               (
                 doctor: {
-                  id: string;
                   attributes: {
                     profession: string;
                     avatar: { data: { attributes: { url: string } } };
                     firstName: string;
                     lastName: string;
                     availability: string;
+                    uid: string;
                   };
                 },
                 index: number
               ) => {
                 return (
-                  <Link key={index} href={"/doctor-profile?id=" + doctor.id}>
+                  <Link
+                    key={index}
+                    href={"/doctor-profile?id=" + doctor.attributes.uid}
+                  >
                     <div
                       data-aos="fade-up"
                       className={styles.collage_block + " doctor-card"}

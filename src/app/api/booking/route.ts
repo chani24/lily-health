@@ -11,7 +11,9 @@ export async function GET(request: Request) {
 export async function POST(req: Request) {
 try{
   const data = await req.json();
-   return  axios.post('/api/auth/local/register', {...data, username: data.email}, {
+
+  return NextResponse.json({ message:  `Tested!` }, { status:200 });
+  return  axios.post('/api/auth/local/register', {...data, username: data.email}, {
       headers: {
         'Content-Type': 'application/json',
       },

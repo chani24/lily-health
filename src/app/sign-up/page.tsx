@@ -32,8 +32,9 @@ export default function SignUp() {
     if (ret[0] === "alert") {
       toast.error(ret[1]);
     } else {
-      toast.success(ret[1]);
+      toast.success("Account creation successful, kindly sign in" || ret[1]);
       reset();
+      setTimeout(() => router.push("/login"), 3000);
     }
     setIsSubmitting(false);
   };

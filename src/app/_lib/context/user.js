@@ -23,6 +23,7 @@ export const UserContext = createContext({
     return res;
   },
   doRegister: (values) => ["", ""],
+  createBooking: (values) => ["", ""],
   doLogin: (values) => {
     const res = {
       alert: ["", ""],
@@ -52,6 +53,16 @@ const UserProvider = ({ children }) => {
   async function doRegister(values) {
     try {
       const resp = await linstance.post("/api/sign-up", values);
+      return ["OK", resp.data.message];
+    } catch (error) {
+      console.log(error);
+      return ["alert", error.response.data.message];
+    }
+  }
+
+  async function createBooking(values) {
+    try {
+      const resp = await linstance.post("/api/booking", values);
       return ["OK", resp.data.message];
     } catch (error) {
       console.log(error);
@@ -126,6 +137,7 @@ const UserProvider = ({ children }) => {
     setId,
     checkLogin,
     doRegister,
+    createBooking,
     doLogin,
     doLogout,
     doRemind,

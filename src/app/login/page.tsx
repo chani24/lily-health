@@ -23,7 +23,6 @@ export default function Login() {
   const password = { current: "" };
   password.current = watch("password", "");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [alert, setAlert] = useState(["", ""]);
 
   const onSubmit = async (values: any) => {
     setIsSubmitting(true);

@@ -270,9 +270,7 @@ export default function Home(props: any) {
         </div>
         <div className="sm-container-padding pt-5 md:pt-0">
           <div className="bg-[#ffffff26] md:bg-[#fff] py-8 rounded-lg md:rounded-none">
-            <div
-              className="flex flex-col lg:flex-row md:justify-between"
-            >
+            <div className="flex flex-col lg:flex-row md:justify-between">
               <div className="container-padding flex flex-col w-full lg:w-[45%] lg:pr-[50px] lg:justify-center">
                 <h3 className="h3">
                   Glance through the top professionals on our platform.
@@ -346,11 +344,11 @@ export default function Home(props: any) {
                     {doctors?.map(
                       (
                         doctor: {
-                          id: string;
                           attributes: {
                             firstName: string;
                             lastName: string;
                             profession: string;
+                            uid: string;
                             avatar: { data: { attributes: { url: string } } };
                           };
                         },
@@ -382,7 +380,12 @@ export default function Home(props: any) {
                                 </div>
                               </div>
                               <div className="md:col-span-2">
-                                <Link href={"/doctor-profile?id=" + doctor?.id}>
+                                <Link
+                                  href={
+                                    "/doctor-profile?id=" +
+                                    doctor.attributes.uid
+                                  }
+                                >
                                   <button>Book</button>
                                 </Link>
                               </div>
