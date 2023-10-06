@@ -2,12 +2,26 @@ import axios from '../../_lib/api';
 import { NextResponse } from "next/server";
 import { cookies } from 'next/headers'
 
+function convertTo12HourFormat(time: string) {
+  // Parse the input time
+  const [hours, minutes] = time.split(':').map(Number);
+
+  // Determine AM or PM
+  const period = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert hours to 12-hour format
+  const hours12 = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
+
+  // Create the formatted time string
+  const formattedTime = `${hours12}:${minutes < 10 ? '0' : ''}${minutes} ${period}`;
+
+  return formattedTime;
+}
 
 function generateHourlyBookings() {
   const startDate = new Date()
   const bookings = [];
   const daysToGenerate = 5; // Generate for 5 days
-  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   const saturday = 'Saturday';
 
   // Helper function to check if a day is a Sunday
@@ -38,7 +52,7 @@ function generateHourlyBookings() {
       const currentHour = new Date().getHours();
         for (let hour = startTime; hour <= endTime; hour++) {
         if (currentDate > new Date() || (currentDate.getDate() === new Date().getDate() && hour >= currentHour)) {  const booking = `${hour}:00`
-          bookingsForDay.push(booking);
+          bookingsForDay.push(convertTo12HourFormat(booking));
         }
       }
       if (bookingsForDay.length > 0) {
@@ -53,8 +67,6 @@ function generateHourlyBookings() {
 
   return bookings;
 }
-
-
 
 // To handle a GET request to /api
 export async function GET(req: Request) {

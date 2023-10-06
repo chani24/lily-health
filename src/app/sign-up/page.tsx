@@ -70,7 +70,6 @@ export default function SignUp() {
               <div>
                 <label>First Name*</label>
                 <input
-                  placeholder="Temitope"
                   {...register("firstName", {
                     required: "First Name is required",
                   })}
@@ -84,7 +83,6 @@ export default function SignUp() {
               <div>
                 <label>Last Name*</label>
                 <input
-                  placeholder="Aiyegbusi"
                   {...register("lastName", {
                     required: "Last Name is required",
                   })}
@@ -98,7 +96,6 @@ export default function SignUp() {
               <div>
                 <label>Email Address*</label>
                 <input
-                  placeholder="adebimpeomolasho@gmail.com"
                   type="email"
                   {...register("email", {
                     required: "Email is required",
@@ -116,7 +113,6 @@ export default function SignUp() {
               <div>
                 <label>Password*</label>
                 <input
-                  placeholder="*******"
                   type="password"
                   {...register("password", {
                     required: "You must specify a password",

@@ -1,5 +1,5 @@
-.footer{
- background-color: rgb(255, 8, 111, 1);
+.footer {
+  background-color: rgb(255, 8, 111, 1);
   color: #fff;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -9,44 +9,42 @@
   overflow: hidden;
 }
 
-.title{
+.title {
   font-size: 48px;
 }
 
-.description{
+.description {
   font-size: 24px;
   max-width: 422px;
 }
 
-.nav_link > div{
-margin-bottom: 20px;
-font-size: 20px;
+.nav_link > div {
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.logo{
-  height: 83px;
-  width: 150.75px;
-}
-
-@media screen and (max-width: 767px){
-  .top_nav{
-    height: 75px;
-}
-
-.logo{
+.logo {
   width: 100.5px;
   height: 57.6px;
 }
+
+@media screen and (max-width: 767px) {
+  .top_nav {
+    height: 75px;
+  }
+
+  .logo {
+    height: 41.5px;
+    width: 75px;
+  }
 }
 
-@media screen and (max-width: 479px){
-
-  .title{
+@media screen and (max-width: 479px) {
+  .title {
     font-size: 32px;
   }
-  
-  .description{
+
+  .description {
     font-size: 16px;
   }
-  
 }

@@ -22,7 +22,7 @@ export default function About() {
     <>
       <TopNav />
       <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
+        <div className="py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
             data-aos="fade-up"
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
@@ -35,23 +35,15 @@ export default function About() {
             <div className="w-full md:w-1/2">
               <p>
                 Lily health, established in 2021 , was created with the aim to
-                provide products, services, and resources  that ensure women
+                provide products, services, and resources that ensure women
                 experience maximum health and wellness stability especially
                 concerning fertility.
               </p>
               <p>
-                Women’s health has always been a sensitive topic to us. Our
-                founder experienced the loss of her mother at the age of 5, and
-                growing up without a maternal figure, made her realise the
-                importance of mothers in the socialisation of a child. With this
-                in mind, she decided to ensure that no child or mother has to
-                deal with the loss I experienced.
-              </p>
-              <p>
-                Lily health would serve as a one stop shop for mothers to gain
-                insight and services related to their reproductive wellness
-                needs, which in return, allows them to service as the best
-                mother, partner, and selves they could possibly be.
+                We would serve as a one stop shop for mothers to gain insight
+                and services related to their reproductive wellness needs, which
+                in return, allows them to service as the best mother, partner,
+                and selves they could possibly be.
               </p>
             </div>
           </div>

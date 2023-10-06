@@ -169,13 +169,13 @@ export default function Home(props: any) {
               <Image alt="infant" src="/images/infant.png" fill />{" "}
             </div>
             <div className="slide">
-              <Image alt="infant" src="/images/infant-2.png" fill />
+              <Image alt="infant" src="/images/infant-9.jpg" fill />
             </div>
             <div className="slide">
               <Image alt="infant" src="/images/infant-3.png" fill />
             </div>
             <div className="slide">
-              <Image alt="infant" src="/images/infant.png" fill />{" "}
+              <Image alt="infant" src="/images/infant-7.jpg" fill />{" "}
             </div>
             <div className="slide">
               <Image alt="infant" src="/images/infant-2.png" fill />
@@ -232,7 +232,7 @@ export default function Home(props: any) {
                 <div className="slide">
                   <Image
                     alt="man and infant"
-                    src="/images/man-and-infant-2.png"
+                    src="/images/woman-and-infant-5.jpg"
                     fill
                   />
                 </div>
@@ -245,8 +245,8 @@ export default function Home(props: any) {
                 </div>
                 <div className="slide">
                   <Image
-                    alt="man and infant"
-                    src="/images/man-and-infant.png"
+                    alt="man, woman and infant"
+                    src="/images/man-woman-and-infant-2.jpg"
                     fill
                   />{" "}
                 </div>
@@ -475,7 +475,7 @@ export default function Home(props: any) {
                     </span>
                   </div>
                   <div className="image">
-                    <Image alt="doctor" src="/images/usman-yousaf.png" fill />
+                    <Image alt="doctor" src="/images/doctor-5.png" fill />
                   </div>
                 </div>
                 <div data-aos="fade-up" className="small bg-[#E4394D]">
@@ -564,7 +564,15 @@ export default function Home(props: any) {
                   <p className="text-2xl font-semibold">Anonymous</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
-                  <Image alt="infant" src="/images/infant-2.png" fill />
+                  <Image alt="infant" src="/images/infant-8.jpg" fill />
+                </div>
+                <div className="slide bg-[#E4394D] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                  <p className="text-xl">
+                    LILY Health empowers women and couples with tailored, safe,
+                    and accessible fertility treatments, focusing on
+                    compassionate care and patient-centered strategies.
+                  </p>
+                  <p className="text-2xl font-semibold">Anonymous</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-4.png" fill />{" "}
@@ -587,9 +595,6 @@ export default function Home(props: any) {
                     compassionate care and patient-centered strategies.
                   </p>
                   <p className="text-2xl font-semibold">Anonymous</p>
-                </div>
-                <div className="slide horizontal-scrolling-items__item">
-                  <Image alt="infant" src="/images/infant-2.png" fill />
                 </div>
               </div>
             </div>

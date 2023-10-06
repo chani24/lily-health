@@ -18,7 +18,7 @@ import { fetcher, imageLoader } from "../_lib/strapi-rest";
 
 export default function Profile() {
   const router = useRouter();
-  const { user, checkLogin } = useContext(UserContext);
+  const { user, checkLogin, firstName } = useContext(UserContext);
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -46,13 +46,13 @@ export default function Profile() {
     <>
       <TopNav />
       <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
+        <div className="py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
             data-aos="fade-up"
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[65%] md:pr-[30px]">
-              <h1 className={styles.header}>Welcome, {user}</h1>
+              <h1 className={styles.header}>Welcome, {firstName}</h1>
               <p>
                 Caring for your health is our top priority. Explore our roster
                 of available doctors who are dedicated to providing you with

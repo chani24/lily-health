@@ -5,6 +5,10 @@ import { linstance } from "../api";
 import { useState, createContext, useEffect } from "react";
 export const UserContext = createContext({
   user: null,
+  initials: null,
+  firstName: null,
+  setInitials: (initials) => {},
+  setFirstName: (name) => {},
   setUser: (user) => {},
   email: null,
   setEmail: (email) => {},
@@ -15,6 +19,8 @@ export const UserContext = createContext({
       data: {
         user: "",
         email: "",
+        firstName: "",
+        lastName: "",
         id: "",
       },
       status: 0,
@@ -29,6 +35,8 @@ export const UserContext = createContext({
       alert: ["", ""],
       message: {
         username: "",
+        firstName: "",
+        lastName: "",
       },
     };
     return res;
@@ -48,6 +56,8 @@ export const UserContext = createContext({
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [email, setEmail] = useState();
+  const [initials, setInitials] = useState();
+  const [firstName, setFirstName] = useState();
   const [id, setId] = useState();
 
   async function doRegister(values) {
@@ -76,6 +86,10 @@ const UserProvider = ({ children }) => {
       setUser(resp.data.user);
       setEmail(resp.data.email);
       setId(resp.data.id);
+      setInitials(
+        resp.data.firstName.split("")[0] + resp.data.lastName.split("")[0]
+      );
+      setFirstName(resp.data.firstName);
       return resp;
     } catch (error) {
       return error.response;
@@ -142,6 +156,10 @@ const UserProvider = ({ children }) => {
     doLogout,
     doRemind,
     doReset,
+    initials,
+    firstName,
+    setInitials,
+    setFirstName,
   };
 
   return (

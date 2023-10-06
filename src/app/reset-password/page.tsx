@@ -73,7 +73,6 @@ export default function ResetPassword() {
               <div>
                 <label>New Password*</label>
                 <input
-                  placeholder="*******"
                   type="password"
                   {...register("password", {
                     required: "You must specify a password",
@@ -89,7 +88,6 @@ export default function ResetPassword() {
               <div>
                 <label>Confirm New Password*</label>
                 <input
-                  placeholder="*******"
                   type="password"
                   {...register("passwordConfirmation", {
                     validate: (value) =>

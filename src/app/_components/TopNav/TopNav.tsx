@@ -13,7 +13,7 @@ export default function TopNav(props: {
   setSearchDropdown?: any;
 }) {
   const [dropdown, setDropdown] = useState(false);
-  const { doRegister, user, checkLogin } = useContext(UserContext);
+  const { initials, user, checkLogin } = useContext(UserContext);
   useEffect(() => {
     const isUserLoggedIn = async () => {
       const res = await checkLogin();
@@ -189,10 +189,10 @@ export default function TopNav(props: {
               </button>
             </Link>
           )}
-          {user && (
-            <button className="button button-light ms-5 hidden md:block">
-              {user}
-            </button>
+          {user && initials && (
+            <div className={"p-3 ms-2 md:ms-4 " + styles.search_bar}>
+              {initials}
+            </div>
           )}
         </div>
       </div>

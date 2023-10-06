@@ -12,7 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const router = useRouter();
-  const { doLogin, setUser, user, checkLogin } = useContext(UserContext);
+  const { doLogin, setUser, user, checkLogin, setInitials, setFirstName } =
+    useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -34,6 +35,10 @@ export default function Login() {
     } else {
       toast.success("Signed in");
       setUser(ret.message.username);
+      setInitials(
+        ret.message.firstName.split("")[0] + ret.message.lastName.split("")[0]
+      );
+      setFirstName(ret.message.firstName);
       setTimeout(() => router.push("/profile"), 3000);
       reset();
     }
@@ -71,7 +76,6 @@ export default function Login() {
               <div>
                 <label>Email Address*</label>
                 <input
-                  placeholder="adebimpeomolasho@gmail.com"
                   {...register("identifier", {
                     required: true,
                   })}
@@ -85,7 +89,6 @@ export default function Login() {
               <div>
                 <label>Password*</label>
                 <input
-                  placeholder="*******"
                   type="password"
                   autoComplete="current-password"
                   {...register("password", {
@@ -98,7 +101,7 @@ export default function Login() {
                   </span>
                 )}
               </div>
-              <div className="text-right mt-[-20px]">
+              <div className="text-right mt-[-8px]">
                 {" "}
                 <Link href="forgot-password">
                   <span className="text-[#666B73]">Forgot password?</span>

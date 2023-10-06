@@ -49,8 +49,7 @@ export default function Footer() {
               />
             </div>
             <p className={styles.description}>
-              Search through our platform with a robust range of medical
-              professionals
+              Creating maximum health and wellness stability
             </p>
           </div>
           <div className="col-span-12 md:col-span-3 md:flex md:justify-between mb-5 md:mb-0">

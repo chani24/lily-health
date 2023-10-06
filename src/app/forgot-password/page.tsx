@@ -67,7 +67,6 @@ export default function Remind() {
               <div>
                 <label>Email Address*</label>
                 <input
-                  placeholder="adebimpeomolasho@gmail.com"
                   {...register("email", {
                     required: "Email is required",
                     pattern:

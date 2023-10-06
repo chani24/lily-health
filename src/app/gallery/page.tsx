@@ -22,7 +22,7 @@ export default function Gallery() {
     <>
       <TopNav />
       <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
+        <div className="py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
             data-aos="fade-up"
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
@@ -35,18 +35,11 @@ export default function Gallery() {
             <div className="w-full md:w-1/2">
               <p>
                 Lily health, established in 2021 , was created with the aim to
-                provide products, services, and resources  that ensure women
+                provide products, services, and resources that ensure women
                 experience maximum health and wellness stability especially
                 concerning fertility.
               </p>
-              <p>
-                Women’s health has always been a sensitive topic to us. Our
-                founder experienced the loss of her mother at the age of 5, and
-                growing up without a maternal figure, made her realise the
-                importance of mothers in the socialisation of a child. With this
-                in mind, she decided to ensure that no child or mother has to
-                deal with the loss I experienced.
-              </p>
+
               <p>
                 Lily health would serve as a one stop shop for mothers to gain
                 insight and services related to their reproductive wellness
@@ -61,13 +54,13 @@ export default function Gallery() {
                 <Image alt="infant" src="/images/infant.png" fill />{" "}
               </div>
               <div className="slide">
-                <Image alt="infant" src="/images/infant-2.png" fill />
+                <Image alt="infant" src="/images/infant-8.jpg" fill />
               </div>
               <div className="slide">
                 <Image alt="infant" src="/images/infant-3.png" fill />
               </div>
               <div className="slide">
-                <Image alt="infant" src="/images/infant.png" fill />{" "}
+                <Image alt="infant" src="/images/infant-7.jpg" fill />{" "}
               </div>
               <div className="slide">
                 <Image alt="infant" src="/images/infant-2.png" fill />
@@ -84,8 +77,8 @@ export default function Gallery() {
               </div>
               <div className="slide">
                 <Image
-                  alt="man and infant"
-                  src="/images/man-and-infant-2.png"
+                  alt="man, woman and infant"
+                  src="/images/man-woman-and-infant-2.jpg"
                   fill
                 />
               </div>
@@ -108,8 +101,8 @@ export default function Gallery() {
               </div>
               <div className="slide">
                 <Image
-                  alt="man and infant"
-                  src="/images/man-and-infant-.png"
+                  alt="woman and infant"
+                  src="/images/woman-and-infant-4.jpg"
                   fill
                 />
               </div>
@@ -120,7 +113,7 @@ export default function Gallery() {
               <div className="slide">
                 <Image
                   alt="woman and infant"
-                  src="/images/woman-and-infant-2.png"
+                  src="/images/woman-and-infant-5.jpg"
                   fill
                 />{" "}
               </div>
@@ -132,11 +125,7 @@ export default function Gallery() {
                 />
               </div>
               <div className="slide">
-                <Image
-                  alt="woman and infant"
-                  src="/images/woman-and-infant.png"
-                  fill
-                />
+                <Image alt="infant" src="/images/infant-9.jpg" fill />
               </div>
               <div className="slide">
                 <Image
@@ -148,7 +137,7 @@ export default function Gallery() {
               <div className="slide">
                 <Image
                   alt="man woman and infant"
-                  src="/images/man-woman-and-infant.png"
+                  src="/images/man-woman-and-infant-3.jpg"
                   fill
                 />
               </div>
@@ -166,7 +155,7 @@ export default function Gallery() {
               <div className="slide">
                 <Image
                   alt="woman and infant"
-                  src="/images/woman-and-infant-3.png"
+                  src="/images/woman-and-infant-5.jpg"
                   fill
                 />{" "}
               </div>
@@ -179,7 +168,7 @@ export default function Gallery() {
               <div className="slide">
                 <Image
                   alt="woman and infant"
-                  src="/images/woman-and-infant-3.png"
+                  src="/images/woman-and-infant-5.jpg"
                   fill
                 />{" "}
               </div>
