@@ -30,9 +30,7 @@ export default function Home(props: any) {
     fetcher
   );
   useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
+    AOS.init();
   }, []);
 
   useEffect(() => {

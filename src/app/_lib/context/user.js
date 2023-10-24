@@ -3,6 +3,7 @@
 import { linstance } from "../api";
 
 import { useState, createContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 export const UserContext = createContext({
   user: null,
   initials: null,
@@ -59,6 +60,7 @@ const UserProvider = ({ children }) => {
   const [initials, setInitials] = useState();
   const [firstName, setFirstName] = useState();
   const [id, setId] = useState();
+  const router = useRouter();
 
   async function doRegister(values) {
     try {
@@ -114,13 +116,14 @@ const UserProvider = ({ children }) => {
   }
 
   const doLogout = async () => {
-    const resp = await linstance.post("/api/auth/logout", {
+    const resp = await linstance.post("/api/logout", {
       method: "POST",
     });
     if (resp.data.message == "success") {
       setUser("");
       setEmail("");
       setId("");
+      router.push("/login");
     }
   };
 

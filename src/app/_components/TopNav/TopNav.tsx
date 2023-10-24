@@ -13,12 +13,10 @@ export default function TopNav(props: {
   setSearchDropdown?: any;
 }) {
   const [dropdown, setDropdown] = useState(false);
-  const { initials, user, checkLogin } = useContext(UserContext);
+  const { initials, user, checkLogin, doLogout } = useContext(UserContext);
   useEffect(() => {
     const isUserLoggedIn = async () => {
-      const res = await checkLogin();
-      if (res.status === 200) {
-      }
+      await checkLogin();
     };
     isUserLoggedIn();
   }, []);
@@ -218,7 +216,9 @@ export default function TopNav(props: {
             <Link href="/resource-center">Resources</Link>
           </div>
           <div>
-            <Link href="/support">Support</Link>
+            <a className="cursor-pointer" onClick={doLogout}>
+              Logout
+            </a>
           </div>
         </div>
       </div>

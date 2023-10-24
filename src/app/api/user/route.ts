@@ -23,7 +23,7 @@ export async function GET(req: Request) {
                 email: response.data.email,
                 id: response.data.id,
                 lastName: response.data.lastName,
-                firsName: response.data.firstName,
+                firstName: response.data.firstName,
               }, { status:200 });
    
           })
