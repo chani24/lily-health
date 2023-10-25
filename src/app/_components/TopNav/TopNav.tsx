@@ -215,11 +215,13 @@ export default function TopNav(props: {
           <div>
             <Link href="/resource-center">Resources</Link>
           </div>
-          <div>
-            <a className="cursor-pointer" onClick={doLogout}>
-              Logout
-            </a>
-          </div>
+          {user && (
+            <div>
+              <a className="cursor-pointer" onClick={doLogout}>
+                Logout
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -165,7 +165,7 @@ export default function BookingSection(props: any) {
       minWidth: "350px",
       maxWidth: "400px",
       left: "50%",
-      webkitTransform: "translateX(-50%)",
+      WebkitTransform: "translateX(-50%)",
       transform: "translateX(-50%)",
     },
   };
@@ -655,7 +655,7 @@ export default function BookingSection(props: any) {
         </form>
 
         <button
-          onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit(onSubmitPc)}
           className={"button button-primary " + styles.btn + " " + styles.btn_2}
         >
           {isSubmitting && "Loading..."}

@@ -22,11 +22,18 @@ export async function GET(request: Request) {
 
 // To handle a POST request to /api
 export async function POST(req: Request) {
-try{
-  const data = await req.json();
-  const cookieStore = cookies();
-  const token = cookieStore.get('token');
-  const reference = generateRandomAlphabets();
+  try {
+    const data = await req.json();
+    const cookieStore = cookies();
+    const token = cookieStore.get('token');
+    const reference = generateRandomAlphabets();
+
+    const bookingExists = await axios
+      .get('/api/bookings?populate=*&filters[dateString][$eq]=' + data.dateString + '&filters[time][$eq]=' + data.time);
+
+    if (bookingExists.data.data.length > 0) {
+      return NextResponse.json({ message: 'Chosen timeslot already booked!' }, { status:400 });
+  }
   
 
   return axios.post('/api/bookings', { data: {...data, reference }
