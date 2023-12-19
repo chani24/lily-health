@@ -24,7 +24,7 @@ export default function Gallery() {
       <main>
         <div className="py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
-            data-aos="fade-up"
+            
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[45%] md:pr-[30px]">

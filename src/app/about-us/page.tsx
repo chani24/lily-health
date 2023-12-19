@@ -40,6 +40,9 @@ export default function About() {
                 concerning fertility.
               </p>
               <p>
+              Women’s health has always been a sensitive topic to us. Our founder experienced the loss of her mother at the age of 5, and growing up without a maternal figure, made her realise the importance of mothers in the socialisation of a child.  With this in mind, she decided to ensure that no child or mother has to deal with the loss I experienced.
+              </p>
+              <p>
                 We would serve as a one stop shop for mothers to gain insight
                 and services related to their reproductive wellness needs, which
                 in return, allows them to service as the best mother, partner,
@@ -52,7 +55,7 @@ export default function About() {
         <div className="container-padding md:flex md:gap-2">
           <div
             data-aos="fade-up"
-            className={styles.large_card + " bg-[#FF4D93]"}
+            className={styles.large_card + " bg-[#FF398C]"}
           >
             <div className={"container-padding " + styles.text}>
               <p>Our Mission</p>
@@ -68,7 +71,7 @@ export default function About() {
           </div>
           <div
             data-aos="fade-up"
-            className={styles.large_card + " bg-[#FF2771] " + styles.second}
+            className={styles.large_card + " bg-[#6B032F] " + styles.second}
           >
             <div className={"container-padding " + styles.text}>
               <p>Our Vision</p>
@@ -96,7 +99,7 @@ export default function About() {
             <div className="md:w-2/3 md:grid md:grid-cols-2 md:gap-x-2">
               <div
                 data-aos="fade-up"
-                className={styles.small_card + " bg-[#FB5B46]"}
+                className={styles.small_card + " bg-[#6B032F]"}
               >
                 <div className={"container-padding " + styles.text}>
                   <p>Privacy</p>
@@ -109,7 +112,7 @@ export default function About() {
               </div>
               <div
                 data-aos="fade-up"
-                className={styles.small_card + " bg-[#FF2771]"}
+                className={styles.small_card + " bg-[#FF086F]"}
               >
                 <div className={"container-padding " + styles.text}>
                   <p>Accessibility</p>
@@ -122,7 +125,7 @@ export default function About() {
               </div>
               <div
                 data-aos="fade-up"
-                className={styles.small_card + " bg-[#E4394D]"}
+                className={styles.small_card + " bg-[#E80765]"}
               >
                 <div className={"container-padding " + styles.text}>
                   <p>Competence</p>
@@ -135,7 +138,7 @@ export default function About() {
               </div>
               <div
                 data-aos="fade-up"
-                className={styles.small_card + " bg-[#FF4D93]"}
+                className={styles.small_card + " bg-[#6B032F]"}
               >
                 <div className={"container-padding " + styles.text}>
                   <p>Education</p>

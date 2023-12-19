@@ -191,7 +191,7 @@ export default function Home(props: any) {
               className="container-padding flex flex-col md:flex-row md:justify-between"
             >
               <div className="w-full md:w-[45%] md:pr-[50px]">
-                <p>Lily Health</p>
+                <p>About Lily Health</p>
                 <h2 className="h2">
                   Creating maximum health and wellness stability
                 </h2>
@@ -463,7 +463,7 @@ export default function Home(props: any) {
             </p>
             <div className="collage">
               <div className="left">
-                <div data-aos="fade-up" className="large bg-[#FB5B46]">
+                <div data-aos="fade-up" className="large bg-[#FF086F]">
                   <div className="container-padding text">
                     <p>01</p>
                     <p>Search</p>
@@ -476,7 +476,7 @@ export default function Home(props: any) {
                     <Image alt="doctor" src="/images/doctor-5.png" fill />
                   </div>
                 </div>
-                <div data-aos="fade-up" className="small bg-[#E4394D]">
+                <div data-aos="fade-up" className="small bg-[#B5064F]">
                   <div className="container-padding text">
                     <p>02</p>
                     <p>Login</p>
@@ -488,7 +488,7 @@ export default function Home(props: any) {
                 </div>
               </div>
               <div className="right">
-                <div data-aos="fade-up" className="small bg-[#FF2771]">
+                <div data-aos="fade-up" className="small bg-[#FF086F]">
                   <div className="container-padding text">
                     <p>03</p>
                     <p>Book</p>
@@ -500,7 +500,7 @@ export default function Home(props: any) {
                 </div>
                 <div
                   data-aos="fade-up"
-                  className="large bg-[#FB5B46] md:bg-[#FF4D93]"
+                  className="large bg-[#6B032F]"
                 >
                   <div className="container-padding text">
                     <p>04</p>
@@ -526,7 +526,7 @@ export default function Home(props: any) {
             >
               <div className="w-full md:w-[45%] md:pr-[40px]">
                 <h3 className="h3">
-                  A platform approved by mothers and intending mothers.
+                  a platform approved by mothers and intending mothers.
                 </h3>
               </div>
               <div className="w-full md:w-1/2">

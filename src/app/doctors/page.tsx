@@ -7,7 +7,6 @@ import Link from "next/link";
 import Footer from "../_components/Footer/Footer";
 
 import styles from "./doctors.module.css";
-import type { Metadata } from "next";
 import TopNav from "../_components/TopNav/TopNav";
 import useSWR from "swr";
 import AOS from "aos";
