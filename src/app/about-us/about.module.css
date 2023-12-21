@@ -82,7 +82,7 @@
 
 @media screen and (min-width: 767px) {
   .header {
-    font-size: 60px;
+    font-size: 48px;
   }
 
   .banner_image {
@@ -118,12 +118,10 @@
   }
 
   .large_card p {
-    font-size: 64px;
+    font-size: 48px;
+    padding-top: 40px;
   }
 
-  .large_card span {
-    font-size: 24px;
-  }
 
 
 }

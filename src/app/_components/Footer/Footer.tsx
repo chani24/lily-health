@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="container-padding">
-        <div className="bg-[#FFE6F1] text-[#FF086F] relative text-white pt-8 my-4 overflow-hidden rounded-lg flex flex-col md:flex-row items-center justify-center">
+      <div className="container-padding md:my-[64px]">
+        <div className="bg-[#FFE6F1] text-[#FF086F] relative pt-8 my-4 overflow-hidden rounded-lg flex flex-col md:flex-row items-center justify-center">
           <div className="container-padding md:px-[80px] md:py-[40px] md:w-1/2">
             <h3 className="h3 text-center md:text-left my-5 max-w-4xl">
               Join us to gain access to world-class health professionals

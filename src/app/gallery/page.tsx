@@ -28,9 +28,10 @@ export default function Gallery() {
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[45%] md:pr-[30px]">
-              <h1 className={styles.header}>
-                A cross section of the families we have helped.
-              </h1>
+              <p><h1 className={styles.header}>
+                a cross section of the families we have helped.
+              </h1></p>
+              
             </div>
             <div className="w-full md:w-1/2">
               <p>

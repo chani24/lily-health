@@ -27,15 +27,15 @@ export default function Doctors() {
     <>
       <TopNav />
       <main>
-        <div className="bg-lighter py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
+        <div className="py-8 rounded-lg md:rounded-none mt-3 md:mt-0 container-padding">
           <div
             data-aos="fade-up"
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[45%] md:pr-[30px]">
-              <h1 className={styles.header}>
+              <p><h1 className={styles.header}>
                 Doctors and health professionals
-              </h1>
+              </h1></p>
             </div>
             <div className="w-full md:w-1/2">
               <p>

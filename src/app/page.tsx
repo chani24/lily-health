@@ -188,13 +188,13 @@ export default function Home(props: any) {
           <div className="bg-light py-8 rounded-lg md:rounded-none">
             <div
               data-aos="fade-up"
-              className="container-padding flex flex-col md:flex-row md:justify-between"
+              className="container-padding flex flex-col md:flex-row md:justify-between md:mb-[40px]"
             >
               <div className="w-full md:w-[45%] md:pr-[50px]">
                 <p>About Lily Health</p>
-                <h2 className="h2">
+                <h3 className="h3">
                   Creating maximum health and wellness stability
-                </h2>
+                </h3>
               </div>
               <div className="w-full md:w-1/2">
                 <p>

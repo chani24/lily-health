@@ -28,9 +28,12 @@ export default function About() {
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[45%] md:pr-[30px]">
-              <h1 className={styles.header}>
+              <p>
+                <h1 className={styles.header}>
                 Creating maximum health and wellness stability
               </h1>
+              </p>
+              
             </div>
             <div className="w-full md:w-1/2">
               <p>
@@ -52,12 +55,12 @@ export default function About() {
           </div>
           <div data-aos="fade-up" className={styles.banner_image}></div>
         </div>
-        <div className="container-padding md:flex md:gap-2">
+        <div className="container-padding bg-light py-[24px] md:py-[48px] md:flex md:gap-2">
           <div
             data-aos="fade-up"
             className={styles.large_card + " bg-[#FF398C]"}
           >
-            <div className={"container-padding " + styles.text}>
+            <div className={"container-padding small-container " + styles.text}>
               <p>Our Mission</p>
               <span>
                 LILY Health empowers women and couples with tailored, safe, and
@@ -73,7 +76,7 @@ export default function About() {
             data-aos="fade-up"
             className={styles.large_card + " bg-[#6B032F] " + styles.second}
           >
-            <div className={"container-padding " + styles.text}>
+            <div className={"container-padding  small-container " + styles.text}>
               <p>Our Vision</p>
               <span>
                 Our goal is to revolutionize the fertility solutions market by
@@ -87,7 +90,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="my-3 md:my-0 bg-light container-padding">
+        <div className="my-3 md:my-0 container-padding">
           <div className="py-[40px] md:py-[109px] md:flex">
             <div className="md:w-1/3 md:pr-[40px] ">
               <h3 className="h3">Our Values</h3>
@@ -101,7 +104,7 @@ export default function About() {
                 data-aos="fade-up"
                 className={styles.small_card + " bg-[#6B032F]"}
               >
-                <div className={"container-padding " + styles.text}>
+                <div className={"container-padding small-container " + styles.text}>
                   <p>Privacy</p>
                   <span>
                     LILY Health empowers women and couples with tailored, safe,
@@ -114,7 +117,7 @@ export default function About() {
                 data-aos="fade-up"
                 className={styles.small_card + " bg-[#FF086F]"}
               >
-                <div className={"container-padding " + styles.text}>
+                <div className={"container-padding small-container " + styles.text}>
                   <p>Accessibility</p>
                   <span>
                     LILY Health empowers women and couples with tailored, safe,
@@ -127,7 +130,7 @@ export default function About() {
                 data-aos="fade-up"
                 className={styles.small_card + " bg-[#E80765]"}
               >
-                <div className={"container-padding " + styles.text}>
+                <div className={"container-padding small-container " + styles.text}>
                   <p>Competence</p>
                   <span>
                     LILY Health empowers women and couples with tailored, safe,
@@ -140,7 +143,7 @@ export default function About() {
                 data-aos="fade-up"
                 className={styles.small_card + " bg-[#6B032F]"}
               >
-                <div className={"container-padding " + styles.text}>
+                <div className={"container-padding small-container " + styles.text}>
                   <p>Education</p>
                   <span>
                     LILY Health empowers women and couples with tailored, safe,

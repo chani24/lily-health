@@ -35,16 +35,16 @@
 
 @media screen and (min-width: 767px){
   .header{
-        font-size: 60px;
+        font-size: 48px;
     }
 
     .resource_container{
       border-radius: 8px;
-      padding: 34px 92px;
+      padding: 28px;
     }
 
     .resource_container h4{
-      font-size: 48px;
+      font-size: 36px;
     }
   
     .upper_div{

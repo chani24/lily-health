@@ -28,11 +28,18 @@ h2.h2{
 h3.h3{
   line-height: 38.4px;
  }
+ 
 
 .container-padding{
-padding-left: 32px;
-padding-right: 32px;
+padding-left: 80px;
+padding-right: 80px;
 }
+
+.container-padding.small-container{
+  padding-left: 32px;
+  padding-right: 32px;
+  }
+
 
 .sm-container-padding{
   padding-left: 0;
@@ -63,8 +70,8 @@ background-color: rgba(255, 157, 196, 0.12);
 
 @media (min-width: 768px) { 
   p{
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 150%;
     margin: 20px 0;
     }
     

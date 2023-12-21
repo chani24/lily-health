@@ -52,8 +52,8 @@ export default function Profile() {
             className="md:py-[80px] flex flex-col md:flex-row md:justify-between"
           >
             <div className="w-full md:w-[65%] md:pr-[30px]">
-              <h1 className={styles.header}>Welcome, {firstName}</h1>
-              <p>
+            <p>  <h1 className={styles.header}>Welcome, {firstName}</h1>
+             </p> <p>
                 Caring for your health is our top priority. Explore our roster
                 of available doctors who are dedicated to providing you with
                 expert care
