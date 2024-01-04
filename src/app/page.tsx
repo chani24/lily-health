@@ -464,7 +464,7 @@ export default function Home(props: any) {
             <div className="collage">
               <div className="left">
                 <div data-aos="fade-up" className="large bg-[#FF086F]">
-                  <div className="container-padding text">
+                  <div className="container-padding  small-container text">
                     <p>01</p>
                     <p>Search</p>
                     <span>
@@ -476,8 +476,8 @@ export default function Home(props: any) {
                     <Image alt="doctor" src="/images/doctor-5.png" fill />
                   </div>
                 </div>
-                <div data-aos="fade-up" className="small bg-[#B5064F]">
-                  <div className="container-padding text">
+                <div data-aos="fade-up" className="small bg-[#FF086F]">
+                  <div className="container-padding  small-container text md:hidden">
                     <p>02</p>
                     <p>Login</p>
                     <span>
@@ -485,11 +485,7 @@ export default function Home(props: any) {
                       anonymous or have a user profile.
                     </span>
                   </div>
-                </div>
-              </div>
-              <div className="right">
-                <div data-aos="fade-up" className="small bg-[#FF086F]">
-                  <div className="container-padding text">
+                  <div className="container-padding  small-container text hidden md:block">
                     <p>03</p>
                     <p>Book</p>
                     <span>
@@ -498,11 +494,31 @@ export default function Home(props: any) {
                     </span>
                   </div>
                 </div>
+              </div>
+              <div className="right">
+                <div data-aos="fade-up" className="small bg-[#B5064F]">
+                 <div className="container-padding  small-container text  hidden md:block">
+                    <p>02</p>
+                    <p>Login</p>
+                    <span>
+                      Create an account on our platform and you can decide to be
+                      anonymous or have a user profile.
+                    </span>
+                  </div> <div className="container-padding  small-container text  md:hidden">
+                    <p>03</p>
+                    <p>Book</p>
+                    <span>
+                      Discover and reserve appointments with a diverse range of
+                      medical professionals seamlessly
+                    </span>
+                  </div>
+                  
+                </div>
                 <div
                   data-aos="fade-up"
                   className="large bg-[#6B032F]"
                 >
-                  <div className="container-padding text">
+                  <div className="container-padding  small-container text">
                     <p>04</p>
                     <p>Help</p>
                     <span>
@@ -542,57 +558,47 @@ export default function Home(props: any) {
                 <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-4.png" fill />{" "}
                 </div>
-                <div className="slide bg-[#FF086F] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                <div className="slide bg-[#FF086F] rounded-lg container-padding small-container py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
-                    LILY Health empowers women and couples with tailored, safe,
-                    and accessible fertility treatments, focusing on
-                    compassionate care and patient-centered strategies.
+                  Lily Health made the birth of my son an incredible experience. Their team was with me every step of the way, providing expert care and unwavering support. From prenatal checkups to the delivery room, I felt confident and cared for. Lily Health truly goes above and beyond."
                   </p>
-                  <p className="text-2xl font-semibold">Anonymous</p>
+                  <p className="text-2xl">The Jake Family</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
-                  <Image alt="infant" src="/images/infant.png" fill />
+                  <Image alt="infant" src="/images/woman-and-infant-6.png" fill />
                 </div>
-                <div className="slide bg-[#FB5B46] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                <div className="slide bg-[#694ABF] rounded-lg container-padding small-container py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
-                    LILY Health empowers women and couples with tailored, safe,
-                    and accessible fertility treatments, focusing on
-                    compassionate care and patient-centered strategies.
+                  I can't thank Lily Health enough for the support during my pregnancy and the beautiful birthing experience. The facility is top-notch, the staff is exceptional, and they made me feel like more than just a patient. Lily Health is a blessing for growing families."
                   </p>
-                  <p className="text-2xl font-semibold">Anonymous</p>
+                  <p className="text-2xl">Mrs Johnson</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
-                  <Image alt="infant" src="/images/infant-8.jpg" fill />
+                  <Image alt="infant" src="/images/woman-and-infant-3.png" fill />
                 </div>
-                <div className="slide bg-[#E4394D] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                <div className="slide bg-[#FD1B3F] rounded-lg container-padding small-container py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
-                    LILY Health empowers women and couples with tailored, safe,
-                    and accessible fertility treatments, focusing on
-                    compassionate care and patient-centered strategies.
+                  Our family welcomed our little princess with Lily Health, and the entire journey was amazing. The personalized care, attention to detail, and the warmth of the staff made this special moment even more memorable. Lily Health isn't just a service; it's a family."
                   </p>
-                  <p className="text-2xl font-semibold">Anonymous</p>
+                  <p className="text-2xl">Mr and Mrs Henderson</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
                   <Image alt="infant" src="/images/infant-4.png" fill />{" "}
                 </div>
-                <div className="slide bg-[#FF086F] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                <div className="slide bg-[#FF086F] rounded-lg container-padding small-container py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
-                    LILY Health empowers women and couples with tailored, safe,
-                    and accessible fertility treatments, focusing on
-                    compassionate care and patient-centered strategies.
+                  Lily Health made the birth of my son an incredible experience. Their team was with me every step of the way, providing expert care and unwavering support. From prenatal checkups to the delivery room, I felt confident and cared for. Lily Health truly goes above and beyond."
                   </p>
-                  <p className="text-2xl font-semibold">Anonymous</p>
+                  <p className="text-2xl">The Jake Family</p>
                 </div>
                 <div className="slide horizontal-scrolling-items__item">
-                  <Image alt="infant" src="/images/infant.png" fill />
+                  <Image alt="infant" src="/images/woman-and-infant-6.png" fill />
                 </div>
-                <div className="slide bg-[#FB5B46] rounded-lg container-padding py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
+                <div className="slide bg-[#694ABF] rounded-lg container-padding small-container py-3 flex flex-col justify-between text-white horizontal-scrolling-items__item">
                   <p className="text-xl">
-                    LILY Health empowers women and couples with tailored, safe,
-                    and accessible fertility treatments, focusing on
-                    compassionate care and patient-centered strategies.
+                  I can't thank Lily Health enough for the support during my pregnancy and the beautiful birthing experience. The facility is top-notch, the staff is exceptional, and they made me feel like more than just a patient. Lily Health is a blessing for growing families."
                   </p>
-                  <p className="text-2xl font-semibold">Anonymous</p>
+                  <p className="text-2xl">Mrs Johnson</p>
                 </div>
               </div>
             </div>

@@ -40,13 +40,14 @@ export default function Footer() {
         <div className="grid grid-cols-12">
           <div className="col-span-12 md:col-span-6 mb-5 md:mb-0 ">
             <div className={"mb-3 md:mb-5 " + styles.title}>
-              <Image
+            {/* <Image
                 className={styles.logo}
                 alt="lily logo"
                 src="/logo-pink.svg"
                 width={32.64}
                 height={17.973}
-              />
+              />*/}  
+              <h1>Lily Health</h1>
             </div>
             <p className={styles.description}>
               Creating maximum health and wellness stability
