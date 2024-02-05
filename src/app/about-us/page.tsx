@@ -42,9 +42,7 @@ export default function About() {
                 experience maximum health and wellness stability especially
                 concerning fertility.
               </p>
-              <p>
-              Women’s health has always been a sensitive topic to us. Our founder experienced the loss of her mother at the age of 5, and growing up without a maternal figure, made her realise the importance of mothers in the socialisation of a child.  With this in mind, she decided to ensure that no child or mother has to deal with the loss I experienced.
-              </p>
+              
               <p>
                 We would serve as a one stop shop for mothers to gain insight
                 and services related to their reproductive wellness needs, which
