@@ -29,18 +29,6 @@ export default function ResourceCenter() {
       isOpen: false,
     },
     {
-      title: "Home Healthcare",
-      description:
-        "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
-      isOpen: false,
-    },
-    {
-      title: "Pharmacy Services",
-      description:
-        "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
-      isOpen: false,
-    },
-    {
       title: "Health Education",
       description:
         "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
