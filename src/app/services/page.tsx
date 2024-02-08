@@ -19,19 +19,19 @@ export default function ResourceCenter() {
     {
       title: "Medical Consultations",
       description:
-        "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
+        "Seeking professional help ? Lily health connects you with reliable and competent fertility professionals in your area and within your insurance network, virtually and / or in person",
       isOpen: false,
     },
     {
       title: "Wellness Programs",
       description:
-        "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
+        "Group wellness fairs held in person with different health care vendors and startup options ",
       isOpen: false,
     },
     {
       title: "Health Education",
       description:
-        "Our goal is to revolutionise the fertility solutions market by fostering empathy, inclusivity, and support, aiming to provide hope and joy for women, young adults, and couples. We are a group of individuals committed to turning the tide on disease and giving people the knowledge, tools and understanding they deserve so they can dictate their own health and happiness. ",
+        "Quarterly scheduled virtual classes to educate about fertility and build community",
       isOpen: false,
     },
     {
